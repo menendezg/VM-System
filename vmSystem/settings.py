@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     #apps related to this project
     'vmSystem.apps.users',
+    'vmSystem.apps.persons',
 ]
 
 MIDDLEWARE = [
