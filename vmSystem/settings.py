@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     # apps related to this project
     "vmSystem.apps.users",
     "vmSystem.apps.persons",
+    "vmSystem.apps.bank_accounts",
+    "vmSystem.apps.employees",
 ]
 
 MIDDLEWARE = [
