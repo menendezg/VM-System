@@ -8,10 +8,11 @@ class Profile(models.Model):
     """Profile representation"""
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    state = models.BooleanField(default=False)
     title = models.CharField(max_length=255)
     description = models.TextField()
-    created = models.DateTimeField(auto_now_add=True)
-    modified = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    modified_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         """return class representation."""
