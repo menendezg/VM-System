@@ -11,7 +11,7 @@ class Employee(models.Model):
     """
 
     cuil = models.IntegerField()
-    position = models.CharField()
+    position = models.CharField(max_length=128)
     admission_date = models.DateTimeField(auto_now_add=True)
     departure_date = models.DateTimeField()
     person = models.OneToOneField(Person, on_delete=models.CASCADE)
