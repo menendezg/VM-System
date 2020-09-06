@@ -1,0 +1,186 @@
+<!-- Sidebar -->
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+  <!-- Sidebar - Brand -->
+  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <div class="sidebar-brand-icon rotate-n-15">
+      <i class="fas fa-laugh-wink"></i>
+    </div>
+    <div class="sidebar-brand-text mx-3">VM-System</div>
+  </a>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider my-0">
+
+  <!-- Nav Item - Dashboard -->
+  <li class="nav-item active">
+    <a class="nav-link" href="index.html">
+      <i class="fas fa-fw fa-tachometer-alt"></i>
+      <span>Dashboard</span></a>
+  </li>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider">
+
+  <!-- Heading -->
+  <div class="sidebar-heading">
+    Interface
+  </div>
+
+  <!-- Nav Item - clientes -->
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#clients" aria-expanded="true"
+       aria-controls="collapseTwo">
+      <i class="fas fa-fw fa-cog"></i>
+      <span>Clientes</span>
+    </a>
+    <div id="clients" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Acciones Posibles:</h6>
+        <a class="collapse-item" href="buttons.html">Crear Nuevo Cliente</a>
+        <a class="collapse-item" href="cards.html">Ver Clientes</a>
+      </div>
+    </div>
+  </li>
+
+  <!-- Nav Item - Vehiculos -->
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#vehicles" aria-expanded="true"
+       aria-controls="collapseTwo">
+      <i class="fas fa-fw fa-cog"></i>
+      <span>Vehiculos</span>
+    </a>
+    <div id="vehicles" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Acciones Posibles:</h6>
+        <a class="collapse-item" href="buttons.html">Crear nuevo Vehiculo</a>
+        <a class="collapse-item" href="cards.html">Ver Vehiculo</a>
+      </div>
+    </div>
+  </li>
+
+
+  <!-- Nav Item - Empleados -->
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#employees" aria-expanded="true"
+       aria-controls="collapseTwo">
+      <i class="fas fa-fw fa-cog"></i>
+      <span>Empleados</span>
+    </a>
+    <div id="employees" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Acciones Posibles:</h6>
+        <a class="collapse-item" href="buttons.html">Crear nuevo empleado</a>
+        <a class="collapse-item" href="{% url 'employees:index' %}">Ver empleados</a>
+      </div>
+    </div>
+  </li>
+
+
+  <!-- Nav Item - companias -->
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#company" aria-expanded="true"
+       aria-controls="collapseTwo">
+      <i class="fas fa-fw fa-cog"></i>
+      <span>Compania</span>
+    </a>
+    <div id="company" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Acciones Posibles:</h6>
+        <a class="collapse-item" href="buttons.html">Crear nueva compania</a>
+        <a class="collapse-item" href="cards.html">Ver companias</a>
+      </div>
+    </div>
+  </li>
+
+
+  <!-- Nav Item - turnos -->
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#booking" aria-expanded="true"
+       aria-controls="collapseTwo">
+      <i class="fas fa-fw fa-cog"></i>
+      <span>Turnos</span>
+    </a>
+    <div id="booking" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Acciones Posibles:</h6>
+        <a class="collapse-item" href="buttons.html">Crear nuevo turno</a>
+        <a class="collapse-item" href="cards.html">Ver turnos agendados</a>
+      </div>
+    </div>
+  </li>
+
+
+  <!-- Nav Item - presuesto -->
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#budget" aria-expanded="true"
+       aria-controls="collapseTwo">
+      <i class="fas fa-fw fa-cog"></i>
+      <span>Presupuestos</span>
+    </a>
+    <div id="budget" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Acciones Posibles:</h6>
+        <a class="collapse-item" href="buttons.html">Crear nuevo presupuesto</a>
+        <a class="collapse-item" href="cards.html">Ver presupuestos </a>
+      </div>
+    </div>
+  </li>
+
+
+  <!-- Nav Item - reparaciones -->
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#repairs" aria-expanded="true"
+       aria-controls="collapseTwo">
+      <i class="fas fa-fw fa-cog"></i>
+      <span>Reparaciones</span>
+    </a>
+    <div id="repairs" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Acciones Posibles:</h6>
+        <a class="collapse-item" href="buttons.html">Crear nuevo presupuesto</a>
+        <a class="collapse-item" href="cards.html">Ver presupuestos </a>
+      </div>
+    </div>
+  </li>
+
+
+  <!-- disables reports - stocks -->
+
+
+  <!-- Divider -->
+  <hr class="sidebar-divider">
+
+  <!-- Heading -->
+  <div class="sidebar-heading">
+    Addons
+  </div>
+
+
+  <!-- Nav Item - Charts -->
+  <li class="nav-item">
+    <a class="nav-link disabled" href="charts.html">
+      <i class="fas fa-fw fa-chart-area "></i>
+      <span>Reportes</span></a>
+  </li>
+
+
+  <!-- Nav Item - Charts -->
+  <li class="nav-item">
+    <a class="nav-link disabled" href="charts.html">
+      <i class="fas fa-fw fa-chart-area "></i>
+      <span>Stock</span></a>
+  </li>
+
+
+  <!-- Divider -->
+  <hr class="sidebar-divider d-none d-md-block">
+
+  <!-- Sidebar Toggler (Sidebar) -->
+  <div class="text-center d-none d-md-inline">
+    <button class="rounded-circle border-0" id="sidebarToggle"></button>
+  </div>
+
+</ul>
+<!-- End of Sidebar -->
+
