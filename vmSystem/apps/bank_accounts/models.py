@@ -8,5 +8,5 @@ class BankAccounts(models.Model):
     BankAccounts class representation.
     """
 
-    cbu = models.IntegerField()
+    cbu = models.CharField(max_length=255)
     bank = models.CharField(max_length=128)

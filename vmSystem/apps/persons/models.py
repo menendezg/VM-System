@@ -5,7 +5,7 @@ from django.db import models
 
 class Person(models.Model):
     """Person model representation"""
-
+    dni = models.CharField(max_length=128, default='')
     last_name = models.CharField(max_length=64)
     name = models.CharField(max_length=64)
     birth_day = models.DateTimeField()
