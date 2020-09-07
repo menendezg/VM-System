@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "vmSystem.apps.persons",
     "vmSystem.apps.bank_accounts",
     "vmSystem.apps.employees",
+    "vmSystem.apps.entities",
 ]
 
 MIDDLEWARE = [
