@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # apps related to this project
-    "vmSystem.apps.persons",
     "vmSystem.apps.bank_accounts",
     "vmSystem.apps.employees",
     "vmSystem.apps.entities",

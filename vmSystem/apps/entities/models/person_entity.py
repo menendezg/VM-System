@@ -1,7 +1,5 @@
 from django.db import models
 
-# Create your models here.
-
 
 class Person(models.Model):
     """Person model representation"""
@@ -17,3 +15,6 @@ class Person(models.Model):
     address_number = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        app_label = 'entities'
