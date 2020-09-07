@@ -1,5 +1,5 @@
 from django.db import models
-from vmSystem.apps.persons.models import Person
+from vmSystem.apps.entities.models.person_entity import Person
 from vmSystem.apps.bank_accounts.models import BankAccounts
 
 # Create your models here.
