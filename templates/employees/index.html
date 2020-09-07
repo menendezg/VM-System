@@ -233,11 +233,12 @@
         <!-- Content Row -->
         <div class="row">
           <p>Here go the content</p>
+
+          <p>{{ employee.person.name }}</p>
           <div class="table-responsive">
             <table class="table">
               <thead class="thead-dark">
               <tr>
-                <th scope="col">#</th>
                 <th scope="col">Dni</th>
                 <th scope="col">Apellido</th>
                 <th scope="col">Nombre</th>
@@ -245,59 +246,30 @@
                 <th scope="col">Telefono</th>
                 <th scope="col">Celular</th>
                 <th scope="col">Email</th>
-                <th scope="col">Provincia</th>
-                <th scope="col">Localidad</th>
+<!--                <th scope="col">Provincia</th>-->
+<!--                <th scope="col">Localidad</th>-->
+                <th scope="col">Ciudad</th>
                 <th scope="col">Direccion de calle</th>
                 <th scope="col">Numero de calle</th>
                 <th scope="col">Cuil</th>
               </tr>
               </thead>
               <tbody>
+              {% for employee in employees %}
               <tr>
-                <th scope="row">1</th>
-                <td>12343323</td>
-                <td>Perez</td>
-                <td>Daniel</td>
-                <td>20/04/1988</td>
-                <td>1156545434</td>
-                <td>1156545434</td>
-                <td>test@gmail.com</td>
-                <td>Buenos Aires</td>
-                <td>Castelar</td>
-                <td>Alvear</td>
-                <td>1230</td>
-                <td>23123433239</td>
+                <td>{{ employee.person.dni }}</td>
+                <td>{{ employee.person.last_name }}</td>
+                <td>{{ employee.person.name }}</td>
+                <td>{{ employee.person.birth_day }}</td>
+                <td>{{ employee.person.phone }}</td>
+                <td>{{ employee.person.mobile }}</td>
+                <td>{{ employee.person.email }}</td>
+                <td>{{ employee.person.city }}</td>
+                <td>{{ employee.person.address }}</td>
+                <td>{{ employee.person.address_number }}</td>
+                <td>{{ employee.cuil }}</td>
               </tr>
-              <tr>
-                <th scope="row">1</th>
-                <td>12343323</td>
-                <td>Perez</td>
-                <td>Daniel</td>
-                <td>20/04/1988</td>
-                <td>1156545434</td>
-                <td>1156545434</td>
-                <td>test@gmail.com</td>
-                <td>Buenos Aires</td>
-                <td>Castelar</td>
-                <td>Alvear</td>
-                <td>1230</td>
-                <td>23123433239</td>
-              </tr>
-              <tr>
-                <th scope="row">1</th>
-                <td>12343323</td>
-                <td>Perez</td>
-                <td>Daniel</td>
-                <td>20/04/1988</td>
-                <td>1156545434</td>
-                <td>1156545434</td>
-                <td>test@gmail.com</td>
-                <td>Buenos Aires</td>
-                <td>Castelar</td>
-                <td>Alvear</td>
-                <td>1230</td>
-                <td>23123433239</td>
-              </tr>
+              {% endfor %}
               </tbody>
             </table>
           </div>
