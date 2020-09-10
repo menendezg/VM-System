@@ -33,6 +33,7 @@ pip-log.txt
 glide.sublime-project
 glide.sublime-workspace
 env**
+env/
 .python-version
 coc-settings.json
 migrations/
