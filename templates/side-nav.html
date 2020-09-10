@@ -3,8 +3,8 @@
 
   <!-- Sidebar - Brand -->
   <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-    <div class="sidebar-brand-icon rotate-n-15">
-      <i class="fas fa-laugh-wink"></i>
+    <div class="sidebar-brand-icon">
+      <i class="fas fa-car"></i>
     </div>
     <div class="sidebar-brand-text mx-3">VM-System</div>
   </a>
@@ -77,22 +77,37 @@
   </li>
 
 
-  <!-- Nav Item - companias -->
+  <!-- Nav Item - Aseguradoras -->
   <li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#company" aria-expanded="true"
+    <a class="nav-link collapsed" href="{% url 'companies:list' %}" data-toggle="collapse" data-target="#company" aria-expanded="true"
        aria-controls="collapseTwo">
-      <i class="fas fa-fw fa-cog"></i>
-      <span>Compania</span>
+      <i class="fas fa-city"></i>
+      <span>Aseguradoras</span>
     </a>
     <div id="company" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Acciones Posibles:</h6>
-        <a class="collapse-item" href="buttons.html">Crear nueva compania</a>
-        <a class="collapse-item" href="cards.html">Ver companias</a>
+        <a class="collapse-item" href="buttons.html">Crear nueva aseguradora</a>
+        <a class="collapse-item" href="{% url 'companies:list' %}">Ver aseguradoras</a>
       </div>
     </div>
   </li>
 
+  <!-- Nav Item - Providers -->
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="{% url 'providers:list' %}" data-toggle="collapse" data-target="#providers" aria-expanded="true"
+       aria-controls="collapseTwo">
+      <i class="fas fa-chalkboard-teacher"></i>
+      <span>Proveedores</span>
+    </a>
+    <div id="providers" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Acciones Posibles:</h6>
+        <a class="collapse-item" href="buttons.html">Crear nuevo proveedor</a>
+        <a class="collapse-item" href="{% url 'providers:list' %}">Ver proveedores</a>
+      </div>
+    </div>
+  </li>
 
   <!-- Nav Item - turnos -->
   <li class="nav-item">
