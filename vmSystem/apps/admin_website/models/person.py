@@ -17,4 +17,4 @@ class Person(models.Model):
     modified_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        app_label = 'entities'
+        app_label = 'admin_website'

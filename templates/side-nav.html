@@ -71,7 +71,7 @@
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Acciones Posibles:</h6>
         <a class="collapse-item" href="buttons.html">Crear nuevo empleado</a>
-        <a class="collapse-item" href="{% url 'employees:index' %}">Ver empleados</a>
+        <a class="collapse-item" href="{% url 'employees_list' %}">Ver empleados</a>
       </div>
     </div>
   </li>
@@ -79,7 +79,7 @@
 
   <!-- Nav Item - Aseguradoras -->
   <li class="nav-item">
-    <a class="nav-link collapsed" href="{% url 'companies:list' %}" data-toggle="collapse" data-target="#company" aria-expanded="true"
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#company" aria-expanded="true"
        aria-controls="collapseTwo">
       <i class="fas fa-city"></i>
       <span>Aseguradoras</span>
@@ -88,14 +88,14 @@
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Acciones Posibles:</h6>
         <a class="collapse-item" href="buttons.html">Crear nueva aseguradora</a>
-        <a class="collapse-item" href="{% url 'companies:list' %}">Ver aseguradoras</a>
+        <a class="collapse-item" href="{% url 'companies_list' %}">Ver aseguradoras</a>
       </div>
     </div>
   </li>
 
   <!-- Nav Item - Providers -->
   <li class="nav-item">
-    <a class="nav-link collapsed" href="{% url 'providers:list' %}" data-toggle="collapse" data-target="#providers" aria-expanded="true"
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#providers" aria-expanded="true"
        aria-controls="collapseTwo">
       <i class="fas fa-chalkboard-teacher"></i>
       <span>Proveedores</span>
@@ -104,7 +104,7 @@
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Acciones Posibles:</h6>
         <a class="collapse-item" href="buttons.html">Crear nuevo proveedor</a>
-        <a class="collapse-item" href="{% url 'providers:list' %}">Ver proveedores</a>
+        <a class="collapse-item" href="{% url 'providers_list' %}">Ver proveedores</a>
       </div>
     </div>
   </li>

@@ -1,8 +1,6 @@
 from django.db import models
-from vmSystem.apps.entities.models.person_entity import Person
-from vmSystem.apps.bank_accounts.models import BankAccounts
-
-# Create your models here.
+from .person import Person
+from .bank_accounts import BankAccounts
 
 
 class Employee(models.Model):
@@ -16,3 +14,6 @@ class Employee(models.Model):
     departure_date = models.DateTimeField(null=True, blank=True)
     person = models.OneToOneField(Person, on_delete=models.CASCADE)
     bank_account = models.OneToOneField(BankAccounts, on_delete=models.CASCADE)
+
+    class Meta:
+        app_label = 'admin_website'
