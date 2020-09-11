@@ -28,6 +28,7 @@ pip-log.txt
 .env
 
 #editor
+.vim
 .idea
 .vscode
 glide.sublime-project
