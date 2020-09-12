@@ -9,4 +9,4 @@ class Provinces(models.Model):
     name = models.CharField(max_length=128)
 
     class Meta:
-        app_label = 'entities'
+        app_label = 'admin_website'

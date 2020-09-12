@@ -2,8 +2,8 @@
 from django.db import models
 
 # Models
-from vmSystem.apps.bank_accounts.models import BankAccounts
-from vmSystem.apps.entities.models.cities import Cities
+from .bank_accounts import BankAccounts
+from .cities import Cities
 
 
 class Companies(models.Model):
@@ -25,3 +25,6 @@ class Companies(models.Model):
     details = models.TextField(blank=True)
     company_type = models.CharField(max_length=64)
     state = models.CharField(max_length=64)
+
+    class Meta:
+        app_label = 'admin_website'

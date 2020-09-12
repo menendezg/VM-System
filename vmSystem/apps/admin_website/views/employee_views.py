@@ -1,9 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import View
-from vmSystem.apps.employees.models import Employee
-
-
-# Create your views here.
+from vmSystem.apps.admin_website.models.employee import Employee
 
 
 class EmployeePage(View):

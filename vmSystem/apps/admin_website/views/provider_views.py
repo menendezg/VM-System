@@ -1,8 +1,5 @@
-# Django
 from django.views.generic import ListView
-
-# Models
-from .models import Providers
+from vmSystem.apps.admin_website.models.providers import Providers
 
 
 class ListProvidersView(ListView):

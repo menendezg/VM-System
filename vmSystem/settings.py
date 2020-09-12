@@ -38,11 +38,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # apps related to this project
-    "vmSystem.apps.bank_accounts",
-    "vmSystem.apps.employees",
-    "vmSystem.apps.entities",
-    "vmSystem.apps.companies",
-    "vmSystem.apps.providers",
+    "vmSystem.apps.admin_website",
+
 ]
 
 MIDDLEWARE = [

@@ -2,7 +2,7 @@
 from django.views.generic import ListView
 
 # Models
-from .models import Companies
+from vmSystem.apps.admin_website.models.companies import Companies
 
 
 class ListCompaniesView(ListView):

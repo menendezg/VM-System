@@ -1,6 +1,6 @@
 # Django
 from django.db import models
-from vmSystem.apps.entities.models.provinces import Provinces
+from .provinces import Provinces
 
 
 class Cities(models.Model):
@@ -12,4 +12,4 @@ class Cities(models.Model):
     name = models.CharField(max_length=128)
 
     class Meta:
-        app_label = 'entities'
+        app_label = 'admin_website'

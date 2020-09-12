@@ -20,17 +20,5 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path(
-        "employees/",
-        include(("vmSystem.apps.employees.urls", "employees")),
-    ),
-    path("", include(("vmSystem.apps.users.urls", "users"))),
-    path(
-        "companies/",
-        include(("vmSystem.apps.companies.urls", "companies")),
-    ),
-    path(
-        "providers/",
-        include(("vmSystem.apps.providers.urls", "providers")),
-    ),
+    path('', include('vmSystem.apps.admin_website.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
