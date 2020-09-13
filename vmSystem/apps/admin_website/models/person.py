@@ -3,7 +3,8 @@ from django.db import models
 
 class Person(models.Model):
     """Person model representation"""
-    dni = models.CharField(max_length=128, default='')
+
+    dni = models.CharField(max_length=128, default="")
     last_name = models.CharField(max_length=64)
     name = models.CharField(max_length=64)
     birth_day = models.DateTimeField()
@@ -16,5 +17,8 @@ class Person(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return self.name
+
     class Meta:
-        app_label = 'admin_website'
+        app_label = "admin_website"

@@ -11,5 +11,8 @@ class BankAccounts(models.Model):
     cbu = models.CharField(max_length=255)
     bank = models.CharField(max_length=128)
 
+    def __str__(self):
+        return self.bank
+
     class Meta:
-        app_label = 'admin_website'
+        app_label = "admin_website"
