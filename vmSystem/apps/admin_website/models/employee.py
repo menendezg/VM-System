@@ -13,7 +13,7 @@ class Employee(models.Model):
     admission_date = models.DateTimeField(auto_now_add=True)
     departure_date = models.DateTimeField(null=True, blank=True)
     person = models.OneToOneField(Person, on_delete=models.CASCADE)
-    bank_account = models.OneToOneField(BankAccounts, on_delete=models.CASCADE)
+    bank_account = models.ForeignKey(BankAccounts, on_delete=models.CASCADE)
 
     class Meta:
-        app_label = 'admin_website'
+        app_label = "admin_website"
