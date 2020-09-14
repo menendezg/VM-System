@@ -1,4 +1,5 @@
 from django.db import models
+from .cities import Cities
 
 
 class Person(models.Model):
@@ -11,7 +12,7 @@ class Person(models.Model):
     phone = models.IntegerField()
     mobile = models.IntegerField()
     email = models.CharField(max_length=128)
-    city = models.CharField(max_length=128)
+    city = models.ForeignKey(Cities, on_delete=models.PROTECT)
     address = models.CharField(max_length=254)
     address_number = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)

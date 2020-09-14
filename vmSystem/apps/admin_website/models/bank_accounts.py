@@ -12,7 +12,7 @@ class BankAccounts(models.Model):
     bank = models.CharField(max_length=128)
 
     def __str__(self):
-        return self.bank
+        return f"Bank: {self.bank}| CBU: {self.cbu}"
 
     class Meta:
         app_label = "admin_website"

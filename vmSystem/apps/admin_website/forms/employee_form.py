@@ -6,7 +6,6 @@ from django import forms
 # Models
 from vmSystem.apps.admin_website.models.employee import Employee
 from vmSystem.apps.admin_website.models.person import Person
-from vmSystem.apps.admin_website.models.provinces import Provinces
 from vmSystem.apps.admin_website.models.bank_accounts import BankAccounts
 from vmSystem.apps.admin_website.models.cities import Cities
 
@@ -25,21 +24,41 @@ class EmployeeForm(forms.Form):
     phone = forms.IntegerField()
     mobile = forms.IntegerField()
     email = forms.CharField(min_length=6, max_length=128, widget=forms.EmailInput())
-    # province = forms.ModelChoiceField(
-    #    queryset=Provinces.objects.all(), empty_label=None
-    # )
     city = forms.ModelChoiceField(queryset=Cities.objects.all(), empty_label=None)
     address = forms.CharField(min_length=4, max_length=254)
     address_number = forms.IntegerField()
     cuil = forms.CharField(min_length=4, max_length=255)
     position = forms.CharField(max_length=128)
-    bank_account = forms.ModelChoiceField(
-        queryset=BankAccounts.objects.all(), empty_label=None
-    )
-    cbu = 255
+    cbu = forms.CharField(min_length=22, max_length=255)
+    bank = forms.CharField(min_length=4, max_length=128)
+
+    def clean_dni(self):
+        """
+        Check by dni if exist the same element
+        return: dni ok if is valid
+        """
+        dni = self.cleaned_data["dni"]
+        dni_taken = Person.objects.filter(dni=dni).exists()
+        if dni_taken:
+            raise forms.ValidationError("dni is already in use")
+
+        return dni
+
+    def clean_cuil(self):
+        """
+        Check by cuil if exists the same employee
+        """
+        cuil = self.cleaned_data["cuil"]
+        cuil_taken = Employee.objects.filter(cuil=cuil).exists()
+        if cuil_taken:
+            raise forms.ValidationError("cuil is already in use")
+
+        return cuil
 
     def save(self):
         """Create employee and person"""
+
+        # First, we create person
         data = {
             "dni": self.cleaned_data["dni"],
             "name": self.cleaned_data["name"],
@@ -54,10 +73,20 @@ class EmployeeForm(forms.Form):
         }
         person = Person(**data)
         person.save()
-        profile = Employee(
+
+        # then, we create the bank account
+        data = {
+            "cbu": self.cleaned_data["cbu"],
+            "bank": self.cleaned_data["bank"],
+        }
+        bank_account = BankAccounts(**data)
+        bank_account.save()
+
+        # finally, we create the employee
+        employee = Employee(
             cuil=self.cleaned_data["cuil"],
             position=self.cleaned_data["position"],
             person=person,
-            bank_account=self.cleaned_data["bank_account"],
+            bank_account=bank_account,
         )
-        profile.save()
+        employee.save()
