@@ -41,7 +41,7 @@ migrations/
 *.db
 *.sublime-project
 *.sublime-workspace
-
+tags
 
 # celery
 celerybeat-schedule
