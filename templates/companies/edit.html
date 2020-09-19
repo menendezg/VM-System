@@ -145,10 +145,10 @@
                         class="form-control {% if form.city.errors %}is-invalid{% endif %}"
                         type="text"
                         name="city_name"
-                        value="{% if form.errors %}{{ form.city.name.value }}{% else %}{{ companies.city.name }}{% endif %}"
+                        value="{% if form.errors %}{{ form.city_name.value }}{% else %}{{ companies.city.name }}{% endif %}"
                     />
                     <div class="invalid-feedback">
-                        {% for error in form.city.errors %}
+                        {% for error in form.city_name.errors %}
                             {{ error }}
                         {% endfor %}
                     </div>
@@ -161,13 +161,13 @@
                         class="form-control {% if form.bank_account.errors %}is-invalid{% endif %} mb-2"
                         type="text"
                         name="bank_account_name"
-                        value="{% if form.errors %}{{ form.bank_account.bank.value }}{% else %}{{ companies.bank_account.bank }}{% endif %}"
+                        value="{% if form.errors %}{{ form.bank_account_name.value }}{% else %}{{ companies.bank_account.bank }}{% endif %}"
                     />
                     <input
                         class="form-control {% if form.bank_account.errors %}is-invalid{% endif %}"
                         type="text"
                         name="bank_account_cbu"
-                        value="{% if form.errors %}{{ form.bank_account.cbu.value }}{% else %}{{ companies.bank_account.cbu }}{% endif %}"
+                        value="{% if form.errors %}{{ form.bank_account_cbu.value }}{% else %}{{ companies.bank_account.cbu }}{% endif %}"
                     />
                     <div class="invalid-feedback">
                         {% for error in form.bank_account.errors %}

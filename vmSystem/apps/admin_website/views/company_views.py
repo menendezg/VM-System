@@ -75,3 +75,12 @@ class EditCompanyView(View):
             company.save()
 
             return redirect('companies_list')
+        else:
+            return render(
+                request=request,
+                template_name='companies/edit.html',
+                context={
+                    'companies': company,
+                    'form': form
+                }
+            )

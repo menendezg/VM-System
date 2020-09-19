@@ -20,5 +20,4 @@ class CompanyForm(forms.Form):
     email = forms.CharField(max_length=200, required=False)
     website = forms.URLField(max_length=200, required=False)
     details = forms.CharField(max_length=255, required=False)
-    #company_type = forms.CharField(max_length=64, required=True)
     state = forms.CharField(max_length=64, required=True)
