@@ -76,7 +76,7 @@
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
           <h1 class="h3 mb-0 text-gray-800">Aseguradoras</h1>
           <a href="#GEN_REPORT_URL_REF" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-            class="fas fa-download fa-sm text-white-50"></i> Generar Reporte</a>
+            class="fas fa-plus fa-sm"></i> Crear nueva aseguradora</a>
         </div>
         <div class="row">
 
@@ -137,23 +137,50 @@
                 <th scope="col">CORREO</th>
                 <th scope="col">TIPO</th>
                 <th scope="col">CIUDAD</th>
+                <th scope="col">ACCIONES</th>
               </tr>
               </thead>
               <tbody>
               {% for company in companies %}
               <tr>
-                <td>{{ company.pk }}</td>
-                <td>{{ company.cuit }}</td>
-                <td>{{ company.business_name }}</td>
-                <td>{{ company.contact_person }}</td>
-                <td>{{ company.email }}</td>
-                <td>{{ company.company_type }}</td>
-                <td>{{ company.city.name }}</td>
+                <td class="align-middle">{{ company.pk }}</td>
+                <td class="align-middle">{{ company.cuit }}</td>
+                <td class="align-middle">{{ company.business_name }}</td>
+                <td class="align-middle">{{ company.contact_person }}</td>
+                <td class="align-middle">{{ company.email }}</td>
+                <td class="align-middle">{{ company.company_type }}</td>
+                <td class="align-middle">{{ company.city.name }}</td>
+                <td>
+                  <a
+                    href="{% url 'company_edit' company.pk %}"
+                    class="btn btn-outline-light text-primary"
+                    data-toggle="tooltip"
+                    data-placement="bottom"
+                    title="Editar">
+                    <i class='fas fa-edit'></i>
+                  </a>
+                  <a
+                    href=""
+                    class="btn btn-outline-light text-danger"
+                    data-toggle="tooltip"
+                    data-placement="bottom"
+                    title="Eliminar">
+                    <i class='fas fa-trash-alt'></i>
+                  </a>
+                </td>
               </tr>
               {% endfor %}
               </tbody>
             </table>
+            <script>
+              $(document).ready(function(){
+                $('[data-toggle="tooltip"]').tooltip();
+              });
+            </script>
           </div>
+
+          {% include 'pagination.html' %}
+
         </div>
       </div>
       <footer class="sticky-footer bg-white">
