@@ -213,14 +213,294 @@
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
           <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
         </div>
+
         <!-- Content Row -->
         <div class="row justify-content-center">
           <div class="col-md-4">
-            {{employee.person.name}}
-            {{employee.cuil}}
-            {{employee.position}}
+            {{employees.person.name}}
+            {{employees.cuil}}
+            {{employees.position}}
           </div>
         </div>
+
+
+        <!-- blah  -->
+      <div class="container-fluid">
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+          <h1 class="h3 mb-0 text-gray-800">
+            <strong>Empleado: </strong>
+            {{ employees.person.name}}
+          </h1>
+        </div>
+
+        <!-- Content Row -->
+        <div class="jusitfy-content-md-center">
+          <div class="p-4">
+            <form class="row" method="POST">
+                {% csrf_token %}
+                <div class="col-sm-12 col-md-6 form-group">
+                    <label>Dni</label>
+                    <input
+                        class="form-control {% if form.dni.errors %}is-invalid{% endif %}"
+                        type="text"
+                        name="dni"
+                        placeholder="Nombre Aseguradora"
+                        value="{% if form.errors %}{{ form.dni.value }}{% else %}{{ employees.person.dni }}{% endif %}"
+                    />
+                    <div class="invalid-feedback">
+                        {% for error in form.business_name.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                </div>
+
+                {# CUIT field #}
+                <div class="col-sm-12 col-md-6 form-group">
+                    <label>Name</label>
+                    <input
+                        class="form-control {% if form.name.errors %}is-invalid{% endif %}"
+                        type="text"
+                        name="cuit"
+                        placeholder="00123456789"
+                        value="{% if form.errors %}{{ form.name.value }}{% else %}{{ employees.name }}{% endif %}"
+                    />
+                    <div class="invalid-feedback">
+                        {% for error in form.name.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                </div>
+
+                {# Contact Person field #}
+                <div class="col-sm-12 col-md-6 form-group">
+                    <label>Last name</label>
+                    <input
+                        class="form-control {% if form.last_name.errors %}is-invalid{% endif %}"
+                        type="text"
+                        name="contact_person"
+                        placeholder="Juan Perez"
+                        value="{% if form.errors %}{{ form.last_name.value }}{% else %}{{ employees.person.last_name }}{% endif %}"
+                    />
+                    <div class="invalid-feedback">
+                        {% for error in form.last_name.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                </div>
+
+                {# City field #}
+                <div class="col-sm-12 col-md-6 form-group">
+                    <label>Birthday</label>
+                    <input
+                        class="form-control {% if form.city.errors %}is-invalid{% endif %}"
+                        type="text"
+                        name="city_name"
+                        value="{% if form.errors %}{{ form.birt_day.value }}{% else %}{{ employees.person.birth_day. }}{% endif %}"
+                    />
+                    <div class="invalid-feedback">
+                        {% for error in form.birth_day.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                </div>
+
+                {# Bank Account fields #}
+                <div class="col-sm-12 col-md-6 form-group">
+                    <label>Phone</label>
+                    <input
+                        class="form-control {% if form.phone.errors %}is-invalid{% endif %} mb-2"
+                        type="text"
+                        name="phone"
+                        value="{% if form.errors %}{{ form.phone.value }}{% else %}{{ employees.person.phone }}{% endif %}"
+                    />
+                    <input
+                        class="form-control {% if form.phone.errors %}is-invalid{% endif %}"
+                        type="text"
+                        name="bank_account_cbu"
+                        value="{% if form.errors %}{{ form.phone.value }}{% else %}{{ employees.person.phone}}{% endif %}"
+                    />
+                    <div class="invalid-feedback">
+                        {% for error in form.bank_account.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                </div>
+
+                {# mobile field #}
+                <div class="col-sm-12 col-md-6 form-group">
+                    <label>Telefono</label>
+                    <input
+                        class="form-control {% if form.mobile.errors %}is-invalid{% endif %}"
+                        type="text"
+                        name="phone"
+                        placeholder="4200 0024"
+                        value="{% if form.errors %}{{ form.mobile.value }}{% else %}{{ employees.person.mobile}}{% endif %}"
+                    />
+                    <div class="invalid-feedback">
+                        {% for error in form.mobile.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                </div>
+
+
+                {# Email field #}
+                <div class="col-sm-12 col-md-6 form-group">
+                    <label>email</label>
+                    <input
+                        class="form-control {% if form.email.errors %}is-invalid{% endif %}"
+                        type="text"
+                        name="mobile"
+                        placeholder="+54 11 12345678"
+                        value="{% if form.errors %}{{ form.email.value }}{% else %}{{ employees.person.email }}{% endif %}"
+                    />
+                    <div class="invalid-feedback">
+                        {% for error in form.email.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                </div>
+
+                {# Address fields #}
+                <div class="col-sm-12 col-md-6 form-group">
+                    <label>Dirección</label>
+                    <input
+                        class="form-control {% if form.address.errors %}is-invalid{% endif %} mb-2"
+                        type="text"
+                        name="address"
+                        value="{% if form.errors %}{{ form.address.value }}{% else %}{{ employees.person.address }}{% endif %}"
+                    />
+                    <input
+                        class="form-control {% if form.address_number.errors %}is-invalid{% endif %}"
+                        type="text"
+                        name="address_number"
+                        value="{% if form.errors %}{{ form.address_number.value }}{% else %}{{ companies.address_number }}{% endif %}"
+                    />
+                    <div class="invalid-feedback">
+                        {% for error in form.address_number.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                </div>
+
+                {# Address number #}
+              <div class="col-sm-12 col-md-6 form-group">
+                  <label>Altura</label>
+                  <input
+                      class="form-control {% if form.address_number.errors %}is-invalid{% endif %} mb-2"
+                      type="text"
+                      name="address"
+                      value="{% if form.errors %}{{ form.address_number.value }}{% else %}{{
+                      employees.person.address_number}}{% endif %}"
+                  />
+                  <input
+                      class="form-control {% if form.address_number.errors %}is-invalid{% endif %}"
+                      type="text"
+                      name="address_number"
+                      value="{% if form.errors %}{{ form.address_number.value }}{% else %}{{ companies.address_number }}{% endif %}"
+                  />
+                  <div class="invalid-feedback">
+                      {% for error in form.address_number.errors %}
+                          {{ error }}
+                      {% endfor %}
+                  </div>
+              </div>
+
+                {# cuil field #}
+                <div class="col-sm-12 col-md-6 form-group">
+                    <label>cuil</label>
+                    <input
+                        class="form-control {% if form.cuil.errors %}is-invalid{% endif %}"
+                        type="text"
+                        name="email"
+                        placeholder="ejemplo@email.com"
+                        value="{% if form.errors %}{{ form.cuil.value }}{% else %}{{ employees.cuil }}{% endif %}"
+                    />
+                    <div class="invalid-feedback">
+                        {% for error in form.cuil.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                </div>
+
+                {# Position field #}
+                <div class="col-sm-12 col-md-6 form-group">
+                    <label>position</label>
+                    <input
+                        class="form-control {% if form.position.errors %}is-invalid{% endif %}"
+                        type="text"
+                        name="website"
+                        placeholder="ejemplo.com.ar"
+                        value="{% if form.errors %}{{ form.position.value }}{% else %}{{ employees.position}}{% endif %}"
+                    />
+                    <div class="invalid-feedback">
+                        {% for error in form.website.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                </div>
+
+                {# CBU field #}
+                <div class="col-sm-12 col-md-6 form-group">
+                    <label>CBU</label>
+                    <textarea
+                        class="form-control {% if form.cbu.errors %}is-invalid{% endif %}"
+                        rows="3"
+                        name="details"
+                    >{% if form.errors %}{{ form.cbu.value }}{% else %}{{employees.bank.cbu}}{% endif %}</textarea>
+                    <div class="invalid-feedback">
+                        {% for error in form.cbu.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-6 form-group">
+                    <label>bank</label>
+                    <input
+                        class="form-control {% if form.bank.errors %}is-invalid{% endif %}"
+                        type="text"
+                        name="website"
+                        placeholder="ejemplo.com.ar"
+                        value="{% if form.errors %}{{ form.bank.value }}{% else %}{{ employees.bank.bank}}{% endif %}"
+                    />
+                    <div class="invalid-feedback">
+                        {% for error in form.bank.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-4 offset-md-4 justify-content-center">
+                  <button type="submit" class="btn btn-primary btn-block mt-5">Guardar</button>
+                </div>
+
+                <div class="col-sm-12 col-md-4 offset-md-4 justify-content-center">
+                  <a href="{% url 'companies_list' %}" class="btn btn-warning btn-block mt-2">Cancelar</a>
+                </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+        <! -- -->
+
+
+
+
+
+
+
+
+
 
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">

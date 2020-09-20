@@ -19,7 +19,9 @@ urlpatterns = [
     path("employees/create/", EmployeeCreate.as_view(), name="employees_create"),
     path("employees/delete/", EmployeeDelete.as_view(), name="employees_delete"),
     path(
-        "employees/<str:cuil>/", EmployeeDetailView.as_view(), name="employees_detail"
+        "employees/<str:cuil>/",
+        EmployeeDetailView.as_view(),
+        name="employees_detail",
     ),
     path("providers", ListProvidersView.as_view(), name="providers_list"),
 ]
