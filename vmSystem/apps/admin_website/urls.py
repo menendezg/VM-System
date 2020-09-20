@@ -10,9 +10,11 @@ from vmSystem.apps.admin_website.views.employee_views import (
     EmployeeDetailView,
 )
 from vmSystem.apps.admin_website.views.provider_views import ListProvidersView
+from vmSystem.apps.admin_website.views.company_views import EditCompanyView
 
 urlpatterns = [
     path("companies", ListCompaniesView.as_view(), name="companies_list"),
+    path("company/<int:id>/edit", EditCompanyView.as_view(), name="company_edit"),
     path("", EmployeePage.as_view(), name="employees_list"),
     path("employees/create/", EmployeeCreate.as_view(), name="employees_create"),
     path("employees/delete/", EmployeeDelete.as_view(), name="employees_delete"),
