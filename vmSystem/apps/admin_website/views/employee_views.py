@@ -1,10 +1,14 @@
-from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
-from django.views.generic import View, FormView, UpdateView
+from django.shortcuts import render, HttpResponseRedirect, get_object_or_404, redirect
+from django.views.generic import View, FormView
 from vmSystem.apps.admin_website.models.employee import Employee
+from vmSystem.apps.admin_website.models.cities import Cities
+from vmSystem.apps.admin_website.views.serializers.employee_serializer import \
+    EmployeeSerializer
 from django.urls import reverse_lazy
 
 # Forms
 from vmSystem.apps.admin_website.forms.employee_form import EmployeeForm
+import sys
 
 
 class EmployeePage(View):
@@ -61,53 +65,30 @@ class EmployeeDetailView(View):
     def get(self, request, *args, **kwargs):
         form = EmployeeForm
         queryset = Employee.objects.get(cuil=kwargs["cuil"])
+        cities = Cities.objects.all()
 
         return render(
             request=request,
             template_name=self.template_name,
-            context={"employees": queryset, "form": form},
+            context={"employees": queryset, "form": form, "cities": cities},
         )
 
     def post(self, request, *args, **kwargs):
-        pass
-        # TO BE CREATED
-        # company = Companies.objects.get(id=kwargs['id'])
-        # form = CompanyForm(request.POST)
-        #
-        # if form.is_valid():
-        #     data = form.cleaned_data
-        #
-        #     # Bank Account
-        #     bank_acc = BankAccounts.objects.get(cbu=company.bank_account.cbu)
-        #     bank_acc.cbu = data['bank_account_cbu']
-        #     bank_acc.bank = data['bank_account_name']
-        #     bank_acc.save()
-        #
-        #     # City
-        #     new_city = Cities.objects.get(name=data['city_name'])
-        #
-        #     # Entire Company object
-        #     company.city = new_city
-        #     company.cuit = data['cuit']
-        #     company.business_name = data['business_name']
-        #     company.contact_person = data['contact_person']
-        #     company.phone = data['phone']
-        #     company.mobile = data['mobile']
-        #     company.address = data['address']
-        #     company.address_number = data['address_number']
-        #     company.email = data['email']
-        #     company.website = data['website']
-        #     company.details = data['details']
-        #     company.state = data['state']
-        #     company.save()
-        #
-        #     return redirect('companies_list')
-        # else:
-        #     return render(
-        #         request=request,
-        #         template_name='companies/edit.html',
-        #         context={
-        #             'companies': company,
-        #             'form': form
-        #         }
-        #     )
+        form = EmployeeForm(request.POST, context="update", identity_key=kwargs["cuil"])
+        if form.is_valid():
+            data = form.cleaned_data
+            employee_serializer = EmployeeSerializer(data, kwargs["cuil"])
+            try:
+                employee_serializer.employee_update()
+            except:
+                print("Unexpected error:", sys.exc_info()[0])
+                # Warning lazy except
+                # TODO: make a nice try and except
+                pass
+            return redirect("employees_list")
+        else:
+            return render(
+                request=request,
+                template_name="employees/detail.html",
+                context={"employee": Employee, "form": form},
+            )
