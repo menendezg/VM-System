@@ -9,9 +9,21 @@ from vmSystem.apps.admin_website.models.companies import Companies
 
 # Register your models here.
 admin.site.register(Person)
-admin.site.register(Provinces)
-admin.site.register(Cities)
 admin.site.register(BankAccounts)
 admin.site.register(Employee)
 admin.site.register(Providers)
 admin.site.register(Companies)
+
+
+@admin.register(Cities)
+class CitiesAdmin(admin.ModelAdmin):
+    """Cities admin."""
+
+    list_display = ('name',)
+
+
+@admin.register(Provinces)
+class ProvincesAdmin(admin.ModelAdmin):
+    """Cities admin."""
+
+    list_display = ('name',)
