@@ -18,8 +18,8 @@ class EmployeeForm(forms.Form):
     """Sign up form."""
 
     def __init__(self, *args, **kwargs):
-        self._context = kwargs.pop('context', None)
-        self._identity_key = kwargs.pop('identity_key', None)
+        self._context = kwargs.pop("context", None)
+        self._identity_key = kwargs.pop("identity_key", None)
         super().__init__(*args, **kwargs)
 
     dni = forms.CharField(min_length=4, max_length=128)
@@ -45,7 +45,7 @@ class EmployeeForm(forms.Form):
 
         dni = self.cleaned_data["dni"]
         dni_taken = Person.objects.filter(dni=dni).exists()
-        if self._context is 'update':
+        if self._context is "update":
             if dni_taken:
                 employee = Employee.objects.get(cuil=self._identity_key)
                 person = Person.objects.get(dni=dni)
@@ -65,7 +65,7 @@ class EmployeeForm(forms.Form):
         """
         cuil = self.cleaned_data["cuil"]
         cuil_taken = Employee.objects.filter(cuil=cuil).exists()
-        if self._context is 'update':
+        if self._context is "update":
             return cuil
         if cuil_taken:
             raise forms.ValidationError("cuil is already in use")

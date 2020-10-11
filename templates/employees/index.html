@@ -271,7 +271,7 @@
                 <td>{{ employee.person.address_number }}</td>
                 <td>{{ employee.cuil }}</td>
                 <td>
-                  <a class="" href="{% url 'employees_delete' %}">
+                  <a class="" href="{% url 'employees_delete' employee.id %}">
                     <i class="fa fa-trash" aria-hidden="true"></i>
                   </a>
                 </td>

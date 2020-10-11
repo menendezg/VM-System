@@ -1,14 +1,16 @@
-from django.shortcuts import render, HttpResponseRedirect, get_object_or_404, redirect
-from django.views.generic import View, FormView
-from vmSystem.apps.admin_website.models.employee import Employee
-from vmSystem.apps.admin_website.models.cities import Cities
-from vmSystem.apps.admin_website.views.serializers.employee_serializer import \
-    EmployeeSerializer
-from django.urls import reverse_lazy
+import sys
 
 # Forms
 from vmSystem.apps.admin_website.forms.employee_form import EmployeeForm
-import sys
+from vmSystem.apps.admin_website.models.cities import Cities
+from vmSystem.apps.admin_website.models.employee import Employee
+from vmSystem.apps.admin_website.views.serializers.employee_serializer import (
+    EmployeeSerializer,
+)
+
+from django.shortcuts import redirect, render
+from django.urls import reverse_lazy
+from django.views.generic import DeleteView, FormView, View
 
 
 class EmployeePage(View):
@@ -40,18 +42,15 @@ class EmployeeCreate(FormView):
         return super().form_valid(form)
 
 
-class EmployeeDelete(View):
+class EmployeeDelete(DeleteView):
     """
     Class to handler delete user
     return: Delete the user, and is succesful return the main employee page
     """
 
-    template_name = "employees/index.html"
-
-    # TODO: create logic to delete the selected item
-    def get(self, request, *args, **kwargs):
-        employees = Employee.objects.all()
-        return render(request, self.template_name, {"employees": employees})
+    model = Employee
+    template_name = "employees/employee_confirm_delete.html"
+    success_url = reverse_lazy("employees_list")
 
 
 class EmployeeDetailView(View):
