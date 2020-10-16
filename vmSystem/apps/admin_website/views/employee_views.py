@@ -49,6 +49,8 @@ class EmployeeDelete(DeleteView):
     """
 
     model = Employee
+
+    # required by the Class based view
     template_name = "employees/employee_confirm_delete.html"
     success_url = reverse_lazy("employees_list")
 

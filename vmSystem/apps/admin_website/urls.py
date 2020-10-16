@@ -1,10 +1,20 @@
 # Django
 # Views
 from vmSystem.apps.admin_website.views.company_views import (
-    EditCompanyView, ListCompaniesView,
+    EditCompanyView,
+    ListCompaniesView,
+)
+from vmSystem.apps.admin_website.views.customers_views import (
+    CustomerView,
+    CustomerDetailView,
+    CustomerDelete,
+    CustomerCreate,
 )
 from vmSystem.apps.admin_website.views.employee_views import (
-    EmployeeCreate, EmployeeDelete, EmployeeDetailView, EmployeePage,
+    EmployeeCreate,
+    EmployeeDelete,
+    EmployeeDetailView,
+    EmployeePage,
 )
 from vmSystem.apps.admin_website.views.provider_views import ListProvidersView
 
@@ -21,5 +31,9 @@ urlpatterns = [
         EmployeeDetailView.as_view(),
         name="employees_detail",
     ),
+    path("customers/", CustomerView.as_view(), name="customer_list"),
+    path("customers/create/", CustomerCreate.as_view(), name='customer_create'),
+    path("customers/<int:id>/edit", CustomerDetailView.as_view(), name="customer_edit"),
+    path("customers/<pk>/delete/", CustomerDelete.as_view(), name="customer_delete"),
     path("providers", ListProvidersView.as_view(), name="providers_list"),
 ]

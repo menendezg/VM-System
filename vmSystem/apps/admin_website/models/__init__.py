@@ -5,3 +5,4 @@ from .employee import Employee
 from .person import Person
 from .providers import Providers
 from .provinces import Provinces
+from .customer import Customer
