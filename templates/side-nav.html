@@ -37,8 +37,8 @@
     <div id="clients" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Acciones Posibles:</h6>
-        <a class="collapse-item" href="buttons.html">Crear Nuevo Cliente</a>
-        <a class="collapse-item" href="cards.html">Ver Clientes</a>
+        <a class="collapse-item" href="{% url 'customer_create' %}">Crear Nuevo Cliente</a>
+        <a class="collapse-item" href="{% url 'customer_list' %}">Ver Clientes</a>
       </div>
     </div>
   </li>
