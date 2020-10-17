@@ -16,7 +16,7 @@ class CustomerView(ListView):
     context_object_name = "customers"
 
     def get_queryset(self):
-        """Return only companies without providers."""
+        """Return all customers queryset"""
         queryset = Customer.objects.all()
         return queryset
 

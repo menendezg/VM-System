@@ -4,6 +4,12 @@ from vmSystem.apps.admin_website.views.company_views import (
     EditCompanyView,
     ListCompaniesView,
 )
+
+from vmSystem.apps.admin_website.views.vehicle_views import (
+    VehicleView,
+    VehicleDelete,
+)
+
 from vmSystem.apps.admin_website.views.customers_views import (
     CustomerView,
     CustomerDetailView,
@@ -32,8 +38,11 @@ urlpatterns = [
         name="employees_detail",
     ),
     path("customers/", CustomerView.as_view(), name="customer_list"),
-    path("customers/create/", CustomerCreate.as_view(), name='customer_create'),
+    path("customers/create/", CustomerCreate.as_view(), name="customer_create"),
     path("customers/<int:id>/edit", CustomerDetailView.as_view(), name="customer_edit"),
     path("customers/<pk>/delete/", CustomerDelete.as_view(), name="customer_delete"),
+    path("vehicles/", VehicleView.as_view(), name="vehicles_list"),
+    # path("vehicles/<int:id>/edit", VehicleDetailView.as_view(), name="vehicle_edit"),
+    path("vehicles/<pk>/delete/", VehicleDelete.as_view(), name="vehicles_delete"),
     path("providers", ListProvidersView.as_view(), name="providers_list"),
 ]

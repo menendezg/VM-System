@@ -6,3 +6,5 @@ from .person import Person
 from .providers import Providers
 from .provinces import Provinces
 from .customer import Customer
+from .vehicles import Vehicles
+from .vehicle_owner import VehicleOwner
