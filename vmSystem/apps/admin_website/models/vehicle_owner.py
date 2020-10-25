@@ -7,7 +7,7 @@ class VehicleOwner(models.Model):
     """
     Vehicle model class representation
 
-    smal note: to achieve the issue when an owner of the car, sell his car
+    small note: to achieve the issue when an owner of the car, sell his car
     and then another owner, went to the service. we created this table
     so we can handle an history of the car, with his differents owners
     and the current owner.
@@ -15,7 +15,7 @@ class VehicleOwner(models.Model):
 
     customer = models.OneToOneField(Customer, on_delete=models.CASCADE)
     vehicle = models.OneToOneField(Vehicles, on_delete=models.CASCADE)
-    start_date = models.DateTimeField()
+    start_date = models.DateTimeField(auto_now_add=True)
     end_date = models.DateTimeField(default=None, blank=True, null=True)
 
     class Meta:

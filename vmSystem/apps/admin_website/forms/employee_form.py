@@ -15,7 +15,7 @@ class CustomDateInput(forms.DateInput):
 
 
 class EmployeeForm(forms.Form):
-    """Sign up form."""
+    """employee form."""
 
     def __init__(self, *args, **kwargs):
         self._context = kwargs.pop("context", None)

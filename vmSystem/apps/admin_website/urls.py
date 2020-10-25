@@ -1,5 +1,6 @@
 # Django
 # Views
+
 from vmSystem.apps.admin_website.views.company_views import (
     EditCompanyView,
     ListCompaniesView,
@@ -8,6 +9,8 @@ from vmSystem.apps.admin_website.views.company_views import (
 from vmSystem.apps.admin_website.views.vehicle_views import (
     VehicleView,
     VehicleDelete,
+    VehicleCreateView,
+    VehicleDetailView,
 )
 
 from vmSystem.apps.admin_website.views.customers_views import (
@@ -42,7 +45,10 @@ urlpatterns = [
     path("customers/<int:id>/edit", CustomerDetailView.as_view(), name="customer_edit"),
     path("customers/<pk>/delete/", CustomerDelete.as_view(), name="customer_delete"),
     path("vehicles/", VehicleView.as_view(), name="vehicles_list"),
-    # path("vehicles/<int:id>/edit", VehicleDetailView.as_view(), name="vehicle_edit"),
+    path("vehicles/create/", VehicleCreateView.as_view(), name="vehicles"
+                                                               "_create"),
+    path("vehicles/<int:id>/edit/", VehicleDetailView.as_view(),
+         name="vehicle_edit"),
     path("vehicles/<pk>/delete/", VehicleDelete.as_view(), name="vehicles_delete"),
     path("providers", ListProvidersView.as_view(), name="providers_list"),
 ]

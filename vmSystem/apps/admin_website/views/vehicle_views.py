@@ -1,6 +1,11 @@
 from django.views.generic import DeleteView, FormView, View, ListView
 from vmSystem.apps.admin_website.models.vehicles import Vehicles
+from vmSystem.apps.admin_website.models.companies import Companies
+from vmSystem.apps.admin_website.models.vehicle_owner import VehicleOwner
+from vmSystem.apps.admin_website.models.customer import Customer
 from django.urls import reverse_lazy
+from vmSystem.apps.admin_website.forms.vehicle_form import VehicleForm
+from django.shortcuts import redirect, render
 
 
 class VehicleView(ListView):
@@ -21,7 +26,56 @@ class VehicleView(ListView):
 
 
 class VehicleDetailView(FormView):
-    pass
+    """
+    class to handler the detail view of the vehicle
+    return: index view with te list of vehicles
+    """
+    template_name = "vehicles/detail.html"
+
+    def get(self, request, *args, **kwargs):
+        form = VehicleForm
+        queryset = Vehicles.objects.get(id=kwargs["id"])
+        companies = Companies.objects.all()
+        customers = Customer.objects.all()
+        vehicles_owners = VehicleOwner.objects.get(vehicle=queryset.id)
+
+        return render(
+            request=request,
+            template_name=self.template_name,
+            context={"vehicles": queryset,
+                     "companies": companies,
+                     "customers": customers,
+                     "vehicles_owner": vehicles_owners,
+                     "form": form}
+        )
+
+    def post(self, request, *args, **kwargs):
+        form = VehicleForm(request.POST)
+        if form.is_valid():
+            form.update()
+            return redirect("vehicles_list")
+        else:
+            return render(
+                request=request,
+                template_name=self.template_name,
+                context={"vehicles": Vehicles, "form": form},
+            )
+
+
+class VehicleCreateView(FormView):
+    """
+    class to handler a create view of vehicle
+    return: create the vehicle. and is success return to main vehicle page
+    """
+
+    template_name = "vehicles/create_vehicle.html"
+    form_class = VehicleForm
+    success_url = reverse_lazy("vehicles_list")
+
+    def form_valid(self, form):
+        """Save form data."""
+        form.save()
+        return super().form_valid(form)
 
 
 class VehicleDelete(DeleteView):

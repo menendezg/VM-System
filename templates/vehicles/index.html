@@ -131,6 +131,7 @@
               <thead class="thead-dark">
               <tr>
                 <th scope="col">ID</th>
+                <th scope="col">PLATE_NUMBER</th>
                 <th scope="col">BRAND</th>
                 <th scope="col">MODEL</th>
                 <th scope="col">COLOR</th>
@@ -146,16 +147,20 @@
               {% for vehicle in vehicles %}
               <tr>
                 <td class="align-middle">{{ vehicle.pk }}</td>
+                <td class="align-middle">{{ vehicle.plate_number }}</td>
                 <td class="align-middle">{{ vehicle.brand }}</td>
                 <td class="align-middle">{{ vehicle.model }}</td>
                 <td class="align-middle">{{ vehicle.color }}</td>
                 <td class="align-middle">{{ vehicle.fuel }}</td>
                 <td class="align-middle">{{ vehicle.kilometers }}</td>
-                <td class="align-middle">{{ vehicle.company.name }}</td>
+                <td class="align-middle">{{ vehicle.company.business_name }}</td>
                 <td class="align-middle">{{ vehicle.state }}</td>
                 <td>
-
-
+                  <a class="" href="{% url 'vehicle_edit' vehicle.pk %}">
+                    <i class="fa fa-wrench" aria-hidden="true"></i>
+                  </a>
+                </td>
+                <td>
                   <a class=""
                      href="{% url 'vehicles_delete' vehicle.pk %}">
                     <i class="fa fa-trash" aria-hidden="true"></i>
