@@ -12,8 +12,6 @@ from vmSystem.apps.admin_website.models.vehicle_owner import VehicleOwner
 
 # Register your models here.
 admin.site.register(Person)
-admin.site.register(Provinces)
-admin.site.register(Cities)
 admin.site.register(BankAccounts)
 admin.site.register(Employee)
 admin.site.register(Providers)
@@ -21,3 +19,17 @@ admin.site.register(Companies)
 admin.site.register(Customer)
 admin.site.register(Vehicles)
 admin.site.register(VehicleOwner)
+
+
+@admin.register(Cities)
+class CitiesAdmin(admin.ModelAdmin):
+    """Cities admin."""
+
+    list_display = ('name',)
+
+
+@admin.register(Provinces)
+class ProvincesAdmin(admin.ModelAdmin):
+    """Cities admin."""
+
+    list_display = ('name',)

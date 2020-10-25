@@ -77,12 +77,10 @@ class CustomerDetailView(View):
 
     def post(self, request, *args, **kwargs):
         data = self._serialize_data(request)
-        import pdb;
-        pdb.set_trace()
         form = CustomerFormSet(request.POST)
         if form.is_valid():
             form.update(data)
-            return redirect("vehicles_list")
+            return redirect("customer_list")
         else:
             return render(
                 request=request,

@@ -1,12 +1,22 @@
 # Django
-# Forms
-from vmSystem.apps.admin_website.forms.companies_form import CompanyForm
+from django.views.generic import (
+    View,
+    ListView,
+    DeleteView,
+)
 # Models
 from vmSystem.apps.admin_website.models.bank_accounts import BankAccounts
 from vmSystem.apps.admin_website.models.cities import Cities
 from vmSystem.apps.admin_website.models.companies import Companies
 
+# Forms
+from vmSystem.apps.admin_website.forms.companies_form import (
+    CompanyForm,
+    CreateCompanyForm,
+)
 from django.shortcuts import redirect, render
+from django.urls import reverse_lazy
+
 from django.views.generic import ListView, View
 
 
@@ -24,6 +34,15 @@ class ListCompaniesView(ListView):
         """Return only companies without providers."""
         queryset = Companies.objects.filter(company_type="Aseguradora").order_by("id")
         return queryset
+
+    def get_context_data(self, **kwargs):
+        """Add another object to context."""
+        context = super().get_context_data(**kwargs)
+        active_companies = Companies.objects.filter(state='Activa')
+        total_companies = Companies.objects.filter(company_type='Aseguradora')
+        active_percent = int((len(active_companies) * 100) / len(total_companies))
+        context['active_percent'] = active_percent
+        return context
 
 
 class EditCompanyView(View):
@@ -77,3 +96,43 @@ class EditCompanyView(View):
                 template_name="companies/edit.html",
                 context={"companies": company, "form": form},
             )
+
+
+class CreateCompanyView(View):
+    """
+    Class to handler Create view.
+    """
+
+    def get(self, request, *args, **kwargs):
+        form = CreateCompanyForm()
+        return render(
+            request=request,
+            template_name='companies/create.html',
+            context={
+                'form': form
+            }
+        )
+
+    def post(self, request, *args, **kwargs):
+        form = CreateCompanyForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('companies_list')
+        else:
+            return render(
+                request=request,
+                template_name="companies/edit.html",
+                context={"form": form},
+            )
+
+
+class CompanyDelete(DeleteView):
+    """
+    class to delete register
+    return a view to accept delete the record
+    """
+
+    model = Companies
+
+    template_name = "companies/companies_delete_confirm_delete.html"
+    success_url = reverse_lazy("companies_list")

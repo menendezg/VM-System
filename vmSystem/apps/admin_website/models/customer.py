@@ -15,7 +15,6 @@ class Customer(models.Model):
     modified_at = models.DateTimeField(auto_now=True)
 
     def update_atrributes(self, data, person_object):
-        import pdb; pdb.set_trace()
         self.business_name = data["business_name"]
         self.cuix = data["cuix"]
         self.last_name = "last_name"

@@ -53,8 +53,6 @@ class CustomerForm(BaseFormSet):
         customer.save()
 
     def update(self, data):
-        import pdb;
-        pdb.set_trace()
         person = Person.objects.get(dni=data["dni"])
         person.update_attributes(data=data)
         person.save()
