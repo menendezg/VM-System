@@ -40,7 +40,10 @@ class ListCompaniesView(ListView):
         context = super().get_context_data(**kwargs)
         active_companies = Companies.objects.filter(state='Activa')
         total_companies = Companies.objects.filter(company_type='Aseguradora')
-        active_percent = int((len(active_companies) * 100) / len(total_companies))
+        try:
+            active_percent = int((len(active_companies) * 100) / len(total_companies))
+        except:
+            active_percent = 0
         context['active_percent'] = active_percent
         return context
 

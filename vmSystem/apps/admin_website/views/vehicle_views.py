@@ -86,5 +86,5 @@ class VehicleDelete(DeleteView):
 
     model = Vehicles
 
-    template_name = "vehicles/vehicles_delete_confirm_delete.html"
+    template_name = "vehicles/vehicle_delete_confirm_delete.html"
     success_url = reverse_lazy("vehicles_list")
