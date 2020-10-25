@@ -26,5 +26,8 @@ class Companies(models.Model):
     company_type = models.CharField(max_length=64)
     state = models.CharField(max_length=64)
 
+    def __str__(self):
+        return f"Aseguradora: {self.business_name}"
+
     class Meta:
         app_label = 'admin_website'
