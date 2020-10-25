@@ -15,4 +15,4 @@ class Cities(models.Model):
         return self.name
 
     class Meta:
-        app_label = 'admin_website'
+        app_label = "admin_website"
