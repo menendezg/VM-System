@@ -21,5 +21,17 @@ class Person(models.Model):
     def __str__(self):
         return self.name
 
+    def update_attributes(self, data):
+        self.dni: data["dni"]
+        self.name: data["name"]
+        self.last_name: data["last_name"]
+        self.birth_day: data["birth_day"]
+        self.phone: data["phone"]
+        self.mobile: data["mobile"]
+        self.email: data["email"]
+        self.city: data["city"]
+        self.address: data["address"]
+        self.address_number: data["address_number"]
+
     class Meta:
         app_label = "admin_website"

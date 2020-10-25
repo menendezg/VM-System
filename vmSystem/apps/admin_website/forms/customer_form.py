@@ -14,6 +14,7 @@ from vmSystem.apps.admin_website.models.customer import Customer
 
 
 class CustomerForm(BaseFormSet):
+
     def add_fields(self, form, index):
         super().add_fields(form, index)
         form.fields["cuix"] = forms.CharField(min_length=22, max_length=22)
@@ -43,26 +44,22 @@ class CustomerForm(BaseFormSet):
         }
         bank_account = BankAccounts(**data)
         bank_account.save()
-
-        # finally, we create the employee
-        employee = Employee(
-            cuil=self.cleaned_data[0]["cuil"],
-            position=self.cleaned_data[0]["position"],
-            person=person,
-            bank_account=bank_account,
-        )
-        employee.save()
-        data = {
-            "cuix": self.cleaned_data[0]["cuix"],
-            "business_name": self.cleaned_data[0]["business_name"],
-            "last_name": "default-lastname",
-        }
         customer = Customer(
             business_name=self.cleaned_data[0]["business_name"],
             cuix=self.cleaned_data[0]["cuix"],
             last_name="last_name",
-            person_id=person,
+            person=person,
         )
+        customer.save()
+
+    def update(self, data):
+        import pdb;
+        pdb.set_trace()
+        person = Person.objects.get(dni=data["dni"])
+        person.update_attributes(data=data)
+        person.save()
+        customer = Customer.objects.get(cuix=data["cuix"])
+        customer.update_atrributes(data=data, person_object=person)
         customer.save()
 
 
