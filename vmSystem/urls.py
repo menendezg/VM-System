@@ -21,4 +21,5 @@ from django.conf.urls.static import static
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('', include('vmSystem.apps.admin_website.urls')),
+    path('session/', include(('vmSystem.apps.login.urls','session'), 'session')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
