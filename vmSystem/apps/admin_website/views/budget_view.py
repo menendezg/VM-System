@@ -1,4 +1,4 @@
-from django.views.generic import FormView, ListView
+from django.views.generic import DeleteView, FormView, ListView
 from vmSystem.apps.admin_website.models.budgets import Budget
 from django.urls import reverse_lazy
 from vmSystem.apps.admin_website.forms.budget_form import BudgetForm
@@ -33,3 +33,15 @@ class BudgetCreateView(FormView):
         """save form data."""
         form.save()
         return super().form_valid(form)
+
+
+class BudgetDeleteView(DeleteView):
+    """
+    class to delete register
+    return a view to accept delete the record.
+    """
+
+    model = Budget
+
+    template_name = "budgets/budget_delete_confirm_delete.html"
+    success_url = reverse_lazy("budget_list")

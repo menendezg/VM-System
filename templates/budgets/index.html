@@ -149,6 +149,11 @@
                 <td class="align-middle">{{ budget.real_cost }}</td>
                 <td class="align-middle">{{ budget.estimated_cost }}</td>
                 <td class="align-middle">{{ budget.owner.vehicle.plate_number}}</td>
+                <td>
+                  <a class="" href="{% url 'budget_delete' budget.pk %}">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                  </a>
+                </td>
               </tr>
               {% endfor %}
               </tbody>
