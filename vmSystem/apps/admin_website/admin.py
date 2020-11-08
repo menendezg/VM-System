@@ -9,7 +9,7 @@ from vmSystem.apps.admin_website.models.companies import Companies
 from vmSystem.apps.admin_website.models.customer import Customer
 from vmSystem.apps.admin_website.models.vehicles import Vehicles
 from vmSystem.apps.admin_website.models.vehicle_owner import VehicleOwner
-
+from vmSystem.apps.admin_website.models.budgets import Budget
 # Register your models here.
 admin.site.register(Person)
 admin.site.register(BankAccounts)
@@ -19,6 +19,7 @@ admin.site.register(Companies)
 admin.site.register(Customer)
 admin.site.register(Vehicles)
 admin.site.register(VehicleOwner)
+admin.site.register(Budget)
 
 
 @admin.register(Cities)

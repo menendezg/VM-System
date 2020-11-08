@@ -216,12 +216,12 @@
         <!-- Content Row -->
         <div class="row justify-content-center">
           <div class="col-md-4">
-            <form method="POST"  class="text-justify" action="{% url 'vehicles_create' %}">
+            <form method="POST"  class="text-justify">
               {% csrf_token  %}
               {{form|crispy}}
             <div class="modal-footer">
               <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-              <button class="btn btn-primary" type="submit">Create new vehicle</button>
+              <button class="btn btn-primary" type="submit">update budget</button>
             </div>
           </form>
         </div>

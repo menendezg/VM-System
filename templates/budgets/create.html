@@ -216,7 +216,7 @@
         <!-- Content Row -->
         <div class="row justify-content-center">
           <div class="col-md-4">
-            <form method="POST"  class="text-justify" action="{% url 'vehicles_create' %}">
+            <form method="POST"  class="text-justify" action="{% url 'budget_create' %}">
               {% csrf_token  %}
               {{form|crispy}}
             <div class="modal-footer">
