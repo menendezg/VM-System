@@ -28,10 +28,12 @@ from vmSystem.apps.admin_website.views.company_views import (
     CreateCompanyView,
     CompanyDelete
 )
-from vmSystem.apps.admin_website.views.employee_views import EmployeePage
+from vmSystem.apps.admin_website.views.budget_view import (
+    BudgetList,
+    BudgetCreateView,
+)
 from vmSystem.apps.admin_website.views.provider_views import ListProvidersView
 
-from django.urls import path
 
 urlpatterns = [
     path('companies', ListCompaniesView.as_view(), name='companies_list'),
@@ -57,4 +59,6 @@ urlpatterns = [
          name="vehicle_edit"),
     path("vehicles/<pk>/delete/", VehicleDelete.as_view(), name="vehicles_delete"),
     path("providers", ListProvidersView.as_view(), name="providers_list"),
+    path("budget/", BudgetList.as_view(), name="budget_list"),
+    path("budget/create/", BudgetCreateView.as_view, name="budget_create"),
 ]
