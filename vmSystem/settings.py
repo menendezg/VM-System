@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "crispy_forms",
     # apps related to this project
     "vmSystem.apps.admin_website",
+    "vmSystem.apps.login",
 ]
 
 MIDDLEWARE = [
@@ -128,3 +129,8 @@ USE_TZ = True
 STATIC_URL = "/static/"
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+# Login Settings
+LOGIN_URL = '/session/login/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = LOGIN_URL

@@ -8,12 +8,13 @@ from vmSystem.apps.admin_website.views.serializers.employee_serializer import (
     EmployeeSerializer,
 )
 
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import DeleteView, FormView, View
 
 
-class EmployeePage(View):
+class EmployeePage(LoginRequiredMixin, View):
     """
     class to handler index view.
     return: index view with the list of employees
