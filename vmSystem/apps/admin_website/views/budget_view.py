@@ -1,4 +1,5 @@
 from django.views.generic import DeleteView, FormView, ListView
+from django.views.generic.edit import UpdateView
 from vmSystem.apps.admin_website.models.budgets import Budget
 from django.urls import reverse_lazy
 from vmSystem.apps.admin_website.forms.budget_form import BudgetForm
@@ -20,12 +21,20 @@ class BudgetList(ListView):
         return queryset
 
 
+class BudgetDetailView(UpdateView):
+    model = Budget
+    fields = ['owner', 'state', 'detail', 'real_cost', 'estimated_cost']
+    # remember this is looking for a template with prefix classmodel
+    template_name = "budgets/budget_update_form.html"
+    success_url = reverse_lazy("budget_list")
+
+
 class BudgetCreateView(FormView):
     """
     class to handler a create view
     return: create the budget. is success return to main budget page
     """
-    template_name = "budgets/create_budget.html"
+    template_name = "budgets/create.html"
     form_class = BudgetForm
     success_url = reverse_lazy("budget_list")
 

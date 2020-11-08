@@ -4,7 +4,7 @@ from .vehicle_owner import VehicleOwner
 
 class Budget(models.Model):
     """budget model representationi."""
-    owner = models.OneToOneField(VehicleOwner, on_delete=models.CASCADE)
+    owner = models.ForeignKey(VehicleOwner, on_delete=models.CASCADE)
     budget_date = models.DateTimeField(auto_now=True)
     state = models.CharField(max_length=64, default='')
     detail = models.CharField(max_length=64, default='')
