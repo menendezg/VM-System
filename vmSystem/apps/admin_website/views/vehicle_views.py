@@ -1,14 +1,15 @@
-from django.views.generic import DeleteView, FormView, View, ListView
-from vmSystem.apps.admin_website.models.vehicles import Vehicles
-from vmSystem.apps.admin_website.models.companies import Companies
-from vmSystem.apps.admin_website.models.vehicle_owner import VehicleOwner
-from vmSystem.apps.admin_website.models.customer import Customer
-from django.urls import reverse_lazy
-from vmSystem.apps.admin_website.forms.vehicle_form import VehicleForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render
+from django.urls import reverse_lazy
+from django.views.generic import DeleteView, FormView, View, ListView
+from vmSystem.apps.admin_website.forms.vehicle_form import VehicleForm
+from vmSystem.apps.admin_website.models.companies import Companies
+from vmSystem.apps.admin_website.models.customer import Customer
+from vmSystem.apps.admin_website.models.vehicle_owner import VehicleOwner
+from vmSystem.apps.admin_website.models.vehicles import Vehicles
 
 
-class VehicleView(ListView):
+class VehicleView(LoginRequiredMixin, ListView):
     """
     class to handler the index view
     return: index view with the list of vehicles
@@ -25,7 +26,7 @@ class VehicleView(ListView):
         return queryset
 
 
-class VehicleDetailView(FormView):
+class VehicleDetailView(LoginRequiredMixin, FormView):
     """
     class to handler the detail view of the vehicle
     return: index view with te list of vehicles
@@ -62,7 +63,7 @@ class VehicleDetailView(FormView):
             )
 
 
-class VehicleCreateView(FormView):
+class VehicleCreateView(LoginRequiredMixin, FormView):
     """
     class to handler a create view of vehicle
     return: create the vehicle. and is success return to main vehicle page
@@ -78,7 +79,7 @@ class VehicleCreateView(FormView):
         return super().form_valid(form)
 
 
-class VehicleDelete(DeleteView):
+class VehicleDelete(LoginRequiredMixin, DeleteView):
     """
     class to delete register
     return a view to accept delete the record
