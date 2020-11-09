@@ -1,26 +1,26 @@
 # Django
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import redirect, render
+from django.urls import reverse_lazy
 from django.views.generic import (
     View,
     ListView,
     DeleteView,
 )
-# Models
-from vmSystem.apps.admin_website.models.bank_accounts import BankAccounts
-from vmSystem.apps.admin_website.models.cities import Cities
-from vmSystem.apps.admin_website.models.companies import Companies
 
 # Forms
 from vmSystem.apps.admin_website.forms.companies_form import (
     CompanyForm,
     CreateCompanyForm,
 )
-from django.shortcuts import redirect, render
-from django.urls import reverse_lazy
 
-from django.views.generic import ListView, View
+# Models
+from vmSystem.apps.admin_website.models.bank_accounts import BankAccounts
+from vmSystem.apps.admin_website.models.cities import Cities
+from vmSystem.apps.admin_website.models.companies import Companies
 
 
-class ListCompaniesView(ListView):
+class ListCompaniesView(LoginRequiredMixin, ListView):
     """
     Return all providers created.
     """
@@ -48,7 +48,7 @@ class ListCompaniesView(ListView):
         return context
 
 
-class EditCompanyView(View):
+class EditCompanyView(LoginRequiredMixin, View):
     """Edit company view."""
 
     def get(self, request, *args, **kwargs):
@@ -101,7 +101,7 @@ class EditCompanyView(View):
             )
 
 
-class CreateCompanyView(View):
+class CreateCompanyView(LoginRequiredMixin, View):
     """
     Class to handler Create view.
     """
@@ -129,7 +129,7 @@ class CreateCompanyView(View):
             )
 
 
-class CompanyDelete(DeleteView):
+class CompanyDelete(LoginRequiredMixin, DeleteView):
     """
     class to delete register
     return a view to accept delete the record

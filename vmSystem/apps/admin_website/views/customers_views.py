@@ -1,12 +1,13 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse_lazy
 from django.views.generic import DeleteView, FormView, View, ListView
+from vmSystem.apps.admin_website.forms.customer_form import CustomerFormSet
 from vmSystem.apps.admin_website.models.customer import Customer
 from vmSystem.apps.admin_website.models.cities import Cities
-from django.urls import reverse_lazy
-from vmSystem.apps.admin_website.forms.customer_form import CustomerFormSet
-from django.shortcuts import render, redirect, get_object_or_404
 
 
-class CustomerView(ListView):
+class CustomerView(LoginRequiredMixin, ListView):
     """
     class to handler the index view
     return: index view with the list of employees
@@ -23,7 +24,7 @@ class CustomerView(ListView):
         return queryset
 
 
-class CustomerCreate(FormView):
+class CustomerCreate(LoginRequiredMixin, FormView):
     """
     Class to handle crate view
     return: create the user. if success, return to main client view
@@ -39,7 +40,7 @@ class CustomerCreate(FormView):
         return super().form_valid(form)
 
 
-class CustomerDelete(DeleteView):
+class CustomerDelete(LoginRequiredMixin, DeleteView):
     """
     Class to handle delete view
     return: if success return to main view
@@ -52,7 +53,7 @@ class CustomerDelete(DeleteView):
     success_url = reverse_lazy("customer_list")
 
 
-class CustomerDetailView(View):
+class CustomerDetailView(LoginRequiredMixin, View):
     """
     class to handler detail view
     return: the resource uri requested
