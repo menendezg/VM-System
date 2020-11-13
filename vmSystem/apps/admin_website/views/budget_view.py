@@ -1,11 +1,12 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy
 from django.views.generic import DeleteView, FormView, ListView
 from django.views.generic.edit import UpdateView
-from vmSystem.apps.admin_website.models.budgets import Budget
-from django.urls import reverse_lazy
 from vmSystem.apps.admin_website.forms.budget_form import BudgetForm
+from vmSystem.apps.admin_website.models.budgets import Budget
 
 
-class BudgetList(ListView):
+class BudgetList(LoginRequiredMixin, ListView):
     """
     class to handler the index view
     return: index view with te list of the budgets
@@ -21,7 +22,7 @@ class BudgetList(ListView):
         return queryset
 
 
-class BudgetDetailView(UpdateView):
+class BudgetDetailView(LoginRequiredMixin, UpdateView):
     model = Budget
     fields = ['owner', 'state', 'detail', 'real_cost', 'estimated_cost']
     # remember this is looking for a template with prefix classmodel
@@ -29,7 +30,7 @@ class BudgetDetailView(UpdateView):
     success_url = reverse_lazy("budget_list")
 
 
-class BudgetCreateView(FormView):
+class BudgetCreateView(LoginRequiredMixin, FormView):
     """
     class to handler a create view
     return: create the budget. is success return to main budget page
@@ -44,7 +45,7 @@ class BudgetCreateView(FormView):
         return super().form_valid(form)
 
 
-class BudgetDeleteView(DeleteView):
+class BudgetDeleteView(LoginRequiredMixin, DeleteView):
     """
     class to delete register
     return a view to accept delete the record.

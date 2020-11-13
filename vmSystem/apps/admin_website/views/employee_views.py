@@ -27,7 +27,7 @@ class EmployeePage(LoginRequiredMixin, View):
         return render(request, self.template_name, {"employees": employees})
 
 
-class EmployeeCreate(FormView):
+class EmployeeCreate(LoginRequiredMixin, FormView):
     """
     Class to handler Create view.
     return: Create the user, and is succesful return to main employee page
@@ -43,7 +43,7 @@ class EmployeeCreate(FormView):
         return super().form_valid(form)
 
 
-class EmployeeDelete(DeleteView):
+class EmployeeDelete(LoginRequiredMixin, DeleteView):
     """
     Class to handler delete user
     return: Delete the user, and is succesful return the main employee page
@@ -56,7 +56,7 @@ class EmployeeDelete(DeleteView):
     success_url = reverse_lazy("employees_list")
 
 
-class EmployeeDetailView(View):
+class EmployeeDetailView(LoginRequiredMixin, View):
     """
     class to handler detail view
     return: the resource uri requested
