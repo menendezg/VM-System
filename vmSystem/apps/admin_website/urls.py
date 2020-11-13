@@ -73,6 +73,6 @@ urlpatterns = [
     path("budget/<pk>/update/", BudgetDetailView.as_view(), name="budget_update"),
     path("repairs/", RepairList.as_view(), name="repair_list"),
     path("repairs/<pk>/delete/", RepairDeleteView.as_view(), name="repair_delete"),
-    path("repairs/<pk>/update/", RepairUpdateView.as_view(), name="repair_update"),
+    path("repairs/<int:id>/update/", RepairUpdateView.as_view(), name="repair_update"),
     path("repairs/create/", RepairCreateView.as_view(), name="repair_create"),
 ]

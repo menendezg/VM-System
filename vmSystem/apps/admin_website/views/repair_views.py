@@ -1,8 +1,13 @@
-from django.views.generic import DeleteView, FormView, ListView
-from django.views.generic.edit import UpdateView
+import sys
+from django.views.generic import DeleteView, FormView, ListView, View
 from vmSystem.apps.admin_website.models.repair import Repair
 from django.urls import reverse_lazy
-from vmSystem.apps.admin_website.forms.repair_form import RepairForm
+from vmSystem.apps.admin_website.forms.repair_form import RepairForm, RepairUpdateForm
+from vmSystem.apps.admin_website.models.budgets import Budget
+from django.shortcuts import render, redirect
+from vmSystem.apps.admin_website.views.serializers.repair_serializer import (
+    RepairSerializer
+)
 
 
 class RepairList(ListView):
@@ -21,8 +26,48 @@ class RepairList(ListView):
         return queryset
 
 
-class RepairUpdateView(UpdateView):
-    pass
+class RepairUpdateView(View):
+    def get(self, request, *args, **kwargs):
+        form = RepairUpdateForm
+        repair_item = Repair.objects.get(id=kwargs['id'])
+        budgets = Budget.objects.all()
+
+        return render(
+            request=request,
+            template_name="repairs/repair_update_form.html",
+            context={
+                "repair_item": repair_item,
+                "form": form,
+                "budgets": budgets,
+
+            }
+        )
+
+    def post(self, request, *args, **kwargs):
+        form = RepairUpdateForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            repair_serializer = RepairSerializer(data, kwargs['id'])
+            try:
+                repair_serializer.update_repair()
+            except:
+                print("Unexpected error:", sys.exc_info()[0])
+                # Warning lazy except
+                # TODO: make a nice try and except
+                pass
+            return redirect("repair_list")
+        else:
+            repair_item = Repair.objects.get(id=kwargs['id'])
+            budgets = Budget.objects.all()
+            return render(
+                request=request,
+                template_name="repairs/repair_update_form.html",
+                context={
+                    "repair_item": repair_item,
+                    "form": form,
+                    "budgets": budgets
+                },
+            )
 
 
 class RepairDetailView():
