@@ -1,4 +1,5 @@
 import sys
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import DeleteView, FormView, ListView, View
 from vmSystem.apps.admin_website.models.repair import Repair
 from django.urls import reverse_lazy
@@ -10,7 +11,7 @@ from vmSystem.apps.admin_website.views.serializers.repair_serializer import (
 )
 
 
-class RepairList(ListView):
+class RepairList(LoginRequiredMixin, ListView):
     """
     class to handler the index view
     return: index view with the list of repairs
@@ -26,7 +27,7 @@ class RepairList(ListView):
         return queryset
 
 
-class RepairUpdateView(View):
+class RepairUpdateView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         form = RepairUpdateForm
         repair_item = Repair.objects.get(id=kwargs['id'])
@@ -74,7 +75,7 @@ class RepairDetailView():
     pass
 
 
-class RepairCreateView(FormView):
+class RepairCreateView(LoginRequiredMixin, FormView):
     """
     class to handler a create view
     return: create the repair object. is success return to main repair page.
@@ -89,7 +90,7 @@ class RepairCreateView(FormView):
         return super().form_valid(form)
 
 
-class RepairDeleteView(DeleteView):
+class RepairDeleteView(LoginRequiredMixin, DeleteView):
     """
     class to delete register
     return: a view to accept delete record.
