@@ -9,3 +9,4 @@ from .customer import Customer
 from .vehicles import Vehicles
 from .vehicle_owner import VehicleOwner
 from .budgets import Budget
+from .repair import Repair

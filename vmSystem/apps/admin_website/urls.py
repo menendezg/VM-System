@@ -34,6 +34,12 @@ from vmSystem.apps.admin_website.views.budget_view import (
     BudgetDeleteView,
     BudgetDetailView,
 )
+from vmSystem.apps.admin_website.views.repair_views import (
+    RepairList,
+    RepairDeleteView,
+    RepairUpdateView,
+    RepairCreateView,
+)
 from vmSystem.apps.admin_website.views.provider_views import ListProvidersView
 
 
@@ -65,4 +71,8 @@ urlpatterns = [
     path("budget/create/", BudgetCreateView.as_view(), name="budget_create"),
     path("budget/<pk>/delete/", BudgetDeleteView.as_view(), name="budget_delete"),
     path("budget/<pk>/update/", BudgetDetailView.as_view(), name="budget_update"),
+    path("repairs/", RepairList.as_view(), name="repair_list"),
+    path("repairs/<pk>/delete/", RepairDeleteView.as_view(), name="repair_delete"),
+    path("repairs/<int:id>/update/", RepairUpdateView.as_view(), name="repair_update"),
+    path("repairs/create/", RepairCreateView.as_view(), name="repair_create"),
 ]
