@@ -5,7 +5,7 @@
   {% include "../side-nav.html" %}
   <div id="content-wrapper" class="d-flex flex-column">
     <div id="content">
-      
+
       {% include "../nav.html" %}
 
       <div class="container-fluid">
@@ -15,7 +15,7 @@
         <div class="container-fluid">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">
-              <strong>Empleado: </strong>
+              <strong>Cliente: </strong>
               {{ customer.person.name}}
             </h1>
           </div>
@@ -65,15 +65,15 @@
 
                 {# CUIX field #}
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label>cuix</label>
+                  <label>cuit</label>
                   <input
-                    class="form-control {% if form.cuix.errors %}is-invalid{% endif %}"
+                    class="form-control {% if form.cuit.errors %}is-invalid{% endif %}"
                     type="text"
-                    name="cuix"
+                    name="cuit"
                     placeholder="00123456789"
-                    value="{% if form.errors %}{{ form.cuix.value }}{% else %}{{ customer.cuix }}{% endif %}"
+                    value="{% if form.errors %}{{ form.cuit.value }}{% else %}{{ customer.cuit }}{% endif %}"
                   />
-                  <div class="invalid-feedback">{% for error in form.cuix.errors %} {{ error }} {% endfor %}</div>
+                  <div class="invalid-feedback">{% for error in form.cuit.errors %} {{ error }} {% endfor %}</div>
                 </div>
 
                 {# Lastname Person field #}
@@ -98,8 +98,7 @@
                     class="form-control {% if form.birth_day.errors %}is-invalid{% endif %}"
                     type="date"
                     name="birth_day"
-                    value="{% if form.errors %}{{ form.birthday.value }}{% else %}{{ customer.person.birth_day| date:"
-                    Y-m-d" }}{% endif %}"
+                    value="{% if form.errors %}{{ form.birthday.value }}{% else %}{{ customer.person.birth_day| date:"Y-m-d" }}{% endif %}"
                   />
                   <div class="invalid-feedback">
                     {% for error in form.birth_day.errors %} {{ error }} {% endfor %}

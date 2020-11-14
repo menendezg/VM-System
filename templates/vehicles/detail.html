@@ -5,7 +5,7 @@
   {% include "../side-nav.html" %}
   <div id="content-wrapper" class="d-flex flex-column">
     <div id="content">
-      
+
       {% include "../nav.html" %}
 
       <div class="container-fluid">
@@ -15,8 +15,8 @@
         <div class="container-fluid">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">
-              <strong>Empleado: </strong>
-              {{ vehicles.person.name}}
+              <strong>Vehiculo: </strong>
+              {{ vehicles.plate_number}}
             </h1>
           </div>
           <!-- Content Row -->
@@ -146,7 +146,7 @@
 
                 {# company field #}
                 <div class="col-sm-12 col-md-12 form-group">
-                  <label>Company</label>
+                  <label>Compania</label>
                   <select id="company" name="company">
                     {%for company in companies %}
                     {% if company.id == vehicles.company.id %}
@@ -165,7 +165,7 @@
 
                 {# customer field #}
                 <div class="col-sm-12 col-md-12 form-group">
-                  <label>Cutomer</label>
+                  <label>Cliente</label>
                   <select id="customer" name="customer">
                     {%for customer in customers %}
                     {% if customer.id == vehicles_owner.customer.id %}
@@ -192,7 +192,7 @@
                 </div>
 
                 <div class="col-sm-12 col-md-4 offset-md-4 justify-content-center">
-                  <a href="{% url 'companies_list' %}" class="btn btn-warning btn-block mt-2">Cancelar</a>
+                  <a href="{% url 'vehicles_list' %}" class="btn btn-warning btn-block mt-2">Cancelar</a>
                 </div>
               </form>
             </div>

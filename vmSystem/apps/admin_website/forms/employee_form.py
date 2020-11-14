@@ -22,7 +22,7 @@ class EmployeeForm(forms.Form):
         self._identity_key = kwargs.pop("identity_key", None)
         super().__init__(*args, **kwargs)
 
-    dni = forms.CharField(min_length=4, max_length=128)
+    dni = forms.CharField(min_length=4, max_length=8)
     name = forms.CharField(min_length=4, max_length=64)
     last_name = forms.CharField(min_length=4, max_length=64)
     birth_day = forms.DateField(widget=CustomDateInput())
@@ -32,7 +32,7 @@ class EmployeeForm(forms.Form):
     city = forms.ModelChoiceField(queryset=Cities.objects.all(), empty_label=None)
     address = forms.CharField(min_length=4, max_length=254)
     address_number = forms.IntegerField()
-    cuil = forms.CharField(min_length=4, max_length=255)
+    cuil = forms.CharField(min_length=4, max_length=11)
     position = forms.CharField(max_length=128)
     cbu = forms.CharField(min_length=22, max_length=255)
     bank = forms.CharField(min_length=4, max_length=128)

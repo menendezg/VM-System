@@ -42,10 +42,7 @@ class VehicleForm(forms.Form):
         )
         vehicle_owner.save()
 
-    def update(self):
-        vehicle = Vehicles.objects.get(plate_number=self.cleaned_data['plate_number'])
+    def update(self, _id):
+        vehicle = Vehicles.objects.get(pk=_id)
         vehicle.update_attributes(data=self.cleaned_data)
         vehicle.save()
-
-
-

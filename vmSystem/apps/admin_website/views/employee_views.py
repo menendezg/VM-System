@@ -89,8 +89,9 @@ class EmployeeDetailView(LoginRequiredMixin, View):
                 pass
             return redirect("employees_list")
         else:
+            cities = Cities.objects.all()
             return render(
                 request=request,
                 template_name="employees/detail.html",
-                context={"employee": Employee, "form": form},
+                context={"employee": Employee, "form": form, "cities": cities},
             )

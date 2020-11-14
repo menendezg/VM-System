@@ -8,14 +8,17 @@
   {% include "../side-nav.html" %}
   <div id="content-wrapper" class="d-flex flex-column">
     <div id="content">
-      
+
       {% include "../nav.html" %}
 
       <div class="container-fluid">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
           <h1 class="h3 mb-0 text-gray-800">Vehiculos</h1>
-          <a href="#GEN_REPORT_URL_REF" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-            class="fas fa-plus fa-sm"></i> Crear nuevo cliente</a>
+          <a href="{% url 'vehicles_create' %}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+            <i class="fas fa-plus fa-sm"></i>
+            Crear nuevo vehiculo
+          </a>
+
         </div>
         <div class="row">
 
@@ -95,12 +98,14 @@
                 <td class="align-middle">{{ vehicle.company.business_name }}</td>
                 <td class="align-middle">{{ vehicle.state }}</td>
                 <td>
-                  <a class="" href="{% url 'vehicle_edit' vehicle.pk %}">
-                    <i class="fa fa-wrench" aria-hidden="true"></i>
+                  <a class="btn btn-outline-light text-primary"
+                     data-toggle="tootltip"
+                     title="Editar"
+                     href="{% url 'vehicle_edit' vehicle.pk %}">
+                    <i class="fas fa-edit" aria-hidden="true"></i>
                   </a>
-                </td>
-                <td>
-                  <a class=""
+                  <a class="btn btn-outline-ligth text-danger"
+                     title="Eliminar"
                      href="{% url 'vehicles_delete' vehicle.pk %}">
                     <i class="fa fa-trash" aria-hidden="true"></i>
                   </a>

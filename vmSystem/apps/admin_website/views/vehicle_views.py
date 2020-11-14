@@ -53,7 +53,7 @@ class VehicleDetailView(LoginRequiredMixin, FormView):
     def post(self, request, *args, **kwargs):
         form = VehicleForm(request.POST)
         if form.is_valid():
-            form.update()
+            form.update(_id=kwargs["id"])
             return redirect("vehicles_list")
         else:
             return render(

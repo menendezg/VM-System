@@ -9,7 +9,7 @@
   {% include "../side-nav.html" %}
   <div id="content-wrapper" class="d-flex flex-column">
     <div id="content">
-      
+
       {% include "../nav.html" %}
 
       <div class="container-fluid">
@@ -23,8 +23,9 @@
               {% csrf_token  %}
               {{form|crispy}}
             <div class="modal-footer">
-              <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-              <button class="btn btn-primary" type="submit">Crear nuevo empleado</button>
+              <a class="btn btn-secondary" href="{% url 'customer_list'  %}" type="button"
+                data-dismiss="modal">Cancel</a>
+              <button class="btn btn-primary" type="submit">Crear nuevo Cliente</button>
             </div>
           </form>
         </div>

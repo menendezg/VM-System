@@ -80,7 +80,7 @@ class CustomerDetailView(LoginRequiredMixin, View):
         data = self._serialize_data(request)
         form = CustomerFormSet(request.POST)
         if form.is_valid():
-            form.update(data)
+            form.update(data, _id=kwargs['id'])
             return redirect("customer_list")
         else:
             return render(
@@ -91,7 +91,7 @@ class CustomerDetailView(LoginRequiredMixin, View):
 
     def _serialize_data(self, request):
         data = {
-            "cuix": request.POST["cuix"],
+            "cuit": request.POST["cuit"],
             "business_name": request.POST["business_name"],
             "dni": request.POST["dni"],
             "name": request.POST["name"],

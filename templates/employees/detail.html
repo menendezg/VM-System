@@ -5,7 +5,7 @@
   {% include "../side-nav.html" %}
   <div id="content-wrapper" class="d-flex flex-column">
     <div id="content">
-      
+
       {% include "../nav.html" %}
 
       <div class="container-fluid">
@@ -81,7 +81,7 @@
                     class="form-control {% if form.birth_day.errors %}is-invalid{% endif %}"
                     type="date"
                     name="birth_day"
-                    value="{% if form.errors %}{{ form.birthday.value }}{% else %}{{ employees.person.birth_day| date:"Y-m-d" }}{% endif %}"
+                    value="{% if form.errors %}{{ form.birth_day.value }}{% else %}{{ employees.person.birth_day| date:"Y-m-d" }}{% endif %}"
                   />
                   <div class="invalid-feedback">
                     {% for error in form.birth_day.errors %} {{ error }} {% endfor %}
@@ -95,10 +95,10 @@
                     {%for city in cities %}
                     {% if city.id == employees.person.city.id %}
                     <option value="{% if form.errors %}{{ form.city.value }}{% else %}{{ city.id }}{% endif %}" selected="selected">{{employees.person.city}}</option>
-                    {% endif %}"
+                    {% else %}
                     <option value="{{city.id}}">{{city.name}}</option>
+                    {% endif %}"
                     {% endfor %}
-
                   </select>
                   <div class="invalid-feedback">
                     {% for error in form.city.errors %} {{ error }} {% endfor %}

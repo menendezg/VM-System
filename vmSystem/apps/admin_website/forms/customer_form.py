@@ -17,11 +17,12 @@ class CustomerForm(BaseFormSet):
 
     def add_fields(self, form, index):
         super().add_fields(form, index)
-        form.fields["cuix"] = forms.CharField(min_length=22, max_length=22)
-        form.fields["business_name"] = forms.CharField(min_length=22, max_length=22)
+        form.fields["cuit"] = forms.CharField(min_length=11, max_length=11)
+        form.fields["business_name"] = forms.CharField(min_length=2, max_length=128)
 
     def save(self):
         """Create employee and person"""
+        import pdb; pdb.set_trace()
         data = {
             "dni": self.cleaned_data[0]["dni"],
             "name": self.cleaned_data[0]["name"],
@@ -46,19 +47,25 @@ class CustomerForm(BaseFormSet):
         bank_account.save()
         customer = Customer(
             business_name=self.cleaned_data[0]["business_name"],
-            cuix=self.cleaned_data[0]["cuix"],
+            cuit=self.cleaned_data[0]["cuit"],
             last_name="last_name",
             person=person,
         )
         customer.save()
 
-    def update(self, data):
-        person = Person.objects.get(dni=data["dni"])
-        person.update_attributes(data=data)
-        person.save()
-        customer = Customer.objects.get(cuix=data["cuix"])
-        customer.update_atrributes(data=data, person_object=person)
+    def update(self, data, _id):
+        #person = Person.objects.get(pk=_id)
+        #person.update_attributes(data=data)
+        #person.save()
+        #customer = Customer.objects.get(cuit=data["cuit"])
+        #customer.update_atrributes(data=data, person_object=person)
+        #customer.save()
+        customer = Customer.objects.get(pk=_id)
+        customer.update_atrributes(data)
         customer.save()
+        customer.person.save()
+
+
 
 
 CustomerFormSet = formset_factory(EmployeeForm, formset=CustomerForm)
