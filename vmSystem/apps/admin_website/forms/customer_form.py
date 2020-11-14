@@ -22,7 +22,6 @@ class CustomerForm(BaseFormSet):
 
     def save(self):
         """Create employee and person"""
-        import pdb; pdb.set_trace()
         data = {
             "dni": self.cleaned_data[0]["dni"],
             "name": self.cleaned_data[0]["name"],
