@@ -10,7 +10,7 @@ class Customer(models.Model):
     cuit = models.CharField(max_length=255, default='')
     status = models.BooleanField(default='True')
     last_name = models.CharField(max_length=64)
-    person = models.OneToOneField(Person, on_delete=models.CASCADE)
+    person = models.ForeignKey(Person, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
 
