@@ -2,11 +2,12 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import DeleteView, FormView, View, ListView
+from django.views.generic.edit import UpdateView
 from vmSystem.apps.admin_website.forms.customer_form import CustomerFormSet
 from vmSystem.apps.admin_website.models.customer import Customer
 from vmSystem.apps.admin_website.models.cities import Cities
-
-
+from vmSystem.apps.admin_website.forms.business_form import BusinessForm
+from vmSystem.apps.admin_website.models.bank_accounts import BankAccounts
 class CustomerView(LoginRequiredMixin, ListView):
     """
     class to handler the index view
@@ -27,7 +28,7 @@ class CustomerView(LoginRequiredMixin, ListView):
 class CustomerCreate(LoginRequiredMixin, FormView):
     """
     Class to handle crate view
-    return: create the user. if success, return to main client view
+    return: create the user. if success, return to main customer view
     """
 
     template_name = "customers/create_customer.html"
@@ -36,6 +37,22 @@ class CustomerCreate(LoginRequiredMixin, FormView):
 
     def form_valid(self, form):
         """Save form data."""
+        form.save()
+        return super().form_valid(form)
+
+
+class CustomerCreateBusiness(LoginRequiredMixin, FormView):
+    """
+    Class to handle create view for business customer
+    return: create the business, If success, return to main customer view
+    """
+
+    template_name = "customers/create_business.html"
+    form_class = BusinessForm
+    success_url = reverse_lazy("customer_list")
+
+    def form_valid(self, form):
+        """save form data"""
         form.save()
         return super().form_valid(form)
 
@@ -105,3 +122,11 @@ class CustomerDetailView(LoginRequiredMixin, View):
             "address_number": request.POST["address_number"],
         }
         return data
+
+
+class CustomerUpdateBusinessView(LoginRequiredMixin, UpdateView):
+    model = Customer
+    fields = ["cuit", "business_name"]
+    template_name = "customers/update_business.html"
+    success_url = reverse_lazy("customer_list")
+

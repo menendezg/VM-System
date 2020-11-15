@@ -8,7 +8,7 @@
   {% include "../side-nav.html" %}
   <div id="content-wrapper" class="d-flex flex-column">
     <div id="content">
-      
+
       {% include "../nav.html" %}
 
       <div class="container-fluid">
@@ -80,12 +80,19 @@
                 {# City field #}
                 <div class="col-sm-12 col-md-6 form-group">
                     <label>Localidad</label>
-                    <input
-                        class="form-control {% if form.city.errors %}is-invalid{% endif %}"
-                        type="text"
-                        name="city_name"
-                        value="{% if form.errors %}{{ form.city_name.value }}{% else %}{{ companies.city.name }}{% endif %}"
-                    />
+                   <select id="city_name" name="city_name">
+                    {%for city in cities %}
+                    {% if city.id == companies.city.id %}
+                    <option value="{% if form.errors %}{{ form.city.value }}{% else %}{{ city.id }}{% endif %}" selected="selected">{{companies.city}}</option>
+                    {% else %}
+                    <option value="{{city.id}}">{{city.name}}</option>
+                    {% endif %}"
+                    {% endfor %}
+                  </select>
+                  <div class="invalid-feedback">
+                    {% for error in form.city.errors %} {{ error }} {% endfor %}
+                  </div>
+
                     <div class="invalid-feedback">
                         {% for error in form.city_name.errors %}
                             {{ error }}

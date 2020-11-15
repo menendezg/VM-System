@@ -28,7 +28,7 @@
 
                 {# buissines name field #}
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label>business name</label>
+                  <label>Nombre de empresa</label>
                   <input
                     class="form-control {% if form.dni.errors %}is-invalid{% endif %}"
                     type="text"
@@ -53,7 +53,7 @@
 
                 {# Name field #}
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label>Name</label>
+                  <label>Nombre</label>
                   <input
                     class="form-control {% if form.name.errors %}is-invalid{% endif %}"
                     type="text"
@@ -78,7 +78,7 @@
 
                 {# Lastname Person field #}
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label>Last name</label>
+                  <label>Apellido</label>
                   <input
                     class="form-control {% if form.last_name.errors %}is-invalid{% endif %}"
                     type="text"
@@ -93,7 +93,7 @@
 
                 {# birth day field #}
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label>Birthday</label>
+                  <label>Fecha de nacimiento</label>
                   <input
                     class="form-control {% if form.birth_day.errors %}is-invalid{% endif %}"
                     type="date"
@@ -107,7 +107,7 @@
 
                 {# city field #}
                 <div class="col-sm-12 col-md-12 form-group">
-                  <label>City</label>
+                  <label>Ciudad</label>
                   <select id="city" name="city">
                     {%for city in cities %}
                     {% if city.id == customer.person.city.id %}
@@ -127,7 +127,7 @@
 
                 {# phone fields #}
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label>Phone</label>
+                  <label>Telefono</label>
                   <input
                     class="form-control {% if form.phone.errors %}is-invalid{% endif %} mb-2"
                     type="text"
@@ -139,7 +139,7 @@
 
                 {# mobile field #}
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label>Mobile</label>
+                  <label>Celular</label>
                   <input
                     class="form-control {% if form.mobile.errors %}is-invalid{% endif %}"
                     type="text"

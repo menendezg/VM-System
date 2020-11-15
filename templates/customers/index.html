@@ -16,7 +16,11 @@
           <h1 class="h3 mb-0 text-gray-800">Clientes</h1>
           <a href="{% url 'customer_create' %}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
             <i class="fas fa-plus fa-sm"></i>
-            Crear nuevo Cliente
+            Crear nuevo Cliente Fisico
+          </a>
+          <a href="{% url 'customer_create_business' %}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+            <i class="fas fa-plus fa-sm"></i>
+            Crear nuevo cliente Juridico
           </a>
         </div>
         <div class="row">
@@ -72,7 +76,7 @@
               <thead class="thead-dark">
               <tr>
                 <th scope="col">ID</th>
-                <th scope="col">CUIX</th>
+                <th scope="col">CUIT</th>
                 <th scope="col">RAZON SOCIAL</th>
                 <th scope="col">STATUS</th>
                 <th scope="col"></th>
@@ -83,10 +87,20 @@
               {% for customer in customers %}
               <tr>
                 <td class="align-middle">{{ customer.pk }}</td>
-                <td class="align-middle">{{ customer.cuix }}</td>
+                <td class="align-middle">{{ customer.cuit }}</td>
                 <td class="align-middle">{{ customer.business_name }}</td>
                 <td class="align-middle">{{ customer.status }}</td>
                 <td>
+                {%if not customer.person %}
+                  <a
+                    href="{% url 'customer_update_business' customer.pk %}"
+                    class="btn btn-outline-light text-primary"
+                    data-toggle="tooltip"
+                    data-placement="bottom"
+                    title="Editar">
+                    <i class='fas fa-edit'></i>
+                  </a>
+                {% else %}
                   <a
                     href="{% url 'customer_edit' customer.pk %}"
                     class="btn btn-outline-light text-primary"
@@ -95,7 +109,7 @@
                     title="Editar">
                     <i class='fas fa-edit'></i>
                   </a>
-
+                {% endif %}
                   <a class="btn btn-outline-light text-danger"
                      title="Eliminar"
                      href="{% url 'customer_delete' customer.pk %}">

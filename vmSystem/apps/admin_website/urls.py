@@ -15,6 +15,8 @@ from vmSystem.apps.admin_website.views.customers_views import (
     CustomerDetailView,
     CustomerDelete,
     CustomerCreate,
+    CustomerCreateBusiness,
+    CustomerUpdateBusinessView,
 )
 from vmSystem.apps.admin_website.views.employee_views import (
     EmployeeCreate,
@@ -58,6 +60,13 @@ urlpatterns = [
     ),
     path("customers/", CustomerView.as_view(), name="customer_list"),
     path("customers/create/", CustomerCreate.as_view(), name="customer_create"),
+    path("customers/create/business",
+         CustomerCreateBusiness.as_view(),
+         name="customer_create_business"),
+
+    path("customers/<pk>/update/",
+         CustomerUpdateBusinessView.as_view(),
+         name="customer_update_business"),
     path("customers/<int:id>/edit", CustomerDetailView.as_view(), name="customer_edit"),
     path("customers/<pk>/delete/", CustomerDelete.as_view(), name="customer_delete"),
     path("vehicles/", VehicleView.as_view(), name="vehicles_list"),

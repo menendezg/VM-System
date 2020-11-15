@@ -10,11 +10,16 @@ class Customer(models.Model):
     cuit = models.CharField(max_length=255, default='')
     status = models.BooleanField(default='True')
     last_name = models.CharField(max_length=64)
-    person = models.ForeignKey(Person, on_delete=models.CASCADE)
+    person = models.ForeignKey(Person,
+                               default=None,
+                               blank=True,
+                               null=True,
+                               on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
 
     def update_atrributes(self, data):
+        """update atritbues of the model."""
         self.business_name = data["business_name"]
         self.cuit = data["cuit"]
         self.last_name = "last_name"

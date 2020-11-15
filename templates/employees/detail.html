@@ -36,7 +36,7 @@
                 </div>
 
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label>Name</label>
+                  <label>Nombre</label>
                   <input
                     class="form-control {% if form.name.errors %}is-invalid{% endif %}"
                     type="text"
@@ -61,7 +61,7 @@
 
                 {# Lastname Person field #}
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label>Last name</label>
+                  <label>Apellido</label>
                   <input
                     class="form-control {% if form.last_name.errors %}is-invalid{% endif %}"
                     type="text"
@@ -76,7 +76,7 @@
 
                 {# birth day field #}
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label>Birthday</label>
+                  <label>Fecha de nacimiento</label>
                   <input
                     class="form-control {% if form.birth_day.errors %}is-invalid{% endif %}"
                     type="date"
@@ -90,7 +90,7 @@
 
                 {# city field #}
                 <div class="col-sm-12 col-md-12 form-group">
-                  <label>City</label>
+                  <label>Ciudad</label>
                   <select id="city" name="city">
                     {%for city in cities %}
                     {% if city.id == employees.person.city.id %}
@@ -106,7 +106,7 @@
                 </div>
                 {# phone fields #}
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label>Phone</label>
+                  <label>Telefono</label>
                   <input
                     class="form-control {% if form.phone.errors %}is-invalid{% endif %} mb-2"
                     type="text"
@@ -118,7 +118,7 @@
 
                 {# mobile field #}
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label>Mobile</label>
+                  <label>Celular</label>
                   <input
                     class="form-control {% if form.mobile.errors %}is-invalid{% endif %}"
                     type="text"
@@ -131,7 +131,7 @@
 
                 {# Email field #}
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label>email</label>
+                  <label>Email</label>
                   <input
                     class="form-control {% if form.email.errors %}is-invalid{% endif %}"
                     type="text"
@@ -170,7 +170,7 @@
 
                 {# Position field #}
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label>position</label>
+                  <label>Posicion</label>
                   <input
                     class="form-control {% if form.position.errors %}is-invalid{% endif %}"
                     type="text"
@@ -193,7 +193,7 @@
                 </div>
 
                 <div class="col-sm-12 col-md-6 form-group">
-                  <label>bank</label>
+                  <label>Banco</label>
                   <input
                     class="form-control {% if form.bank.errors %}is-invalid{% endif %}"
                     type="text"

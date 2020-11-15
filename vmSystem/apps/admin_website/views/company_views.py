@@ -54,11 +54,16 @@ class EditCompanyView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         form = CompanyForm()
         company = Companies.objects.get(id=kwargs["id"])
+        cities = Cities.objects.all()
 
         return render(
             request=request,
             template_name="companies/edit.html",
-            context={"companies": company, "form": form},
+            context={
+                "companies": company,
+                "form": form,
+                "cities": cities
+            },
         )
 
     def post(self, request, *args, **kwargs):
@@ -75,7 +80,7 @@ class EditCompanyView(LoginRequiredMixin, View):
             bank_acc.save()
 
             # City
-            new_city = Cities.objects.get(name=data["city_name"])
+            new_city = Cities.objects.get(pk=data["city_name"])
 
             # Entire Company object
             company.city = new_city
